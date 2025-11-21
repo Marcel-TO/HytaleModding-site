@@ -12,7 +12,7 @@ export default function HomePage() {
             Community
           </span>
         </div>
-        <h1 className="font-grotesk text-5xl p-2 md:text-6xl font-bold tracking-wide bg-gradient-to-b from-slate-500 to-slate-900 dark:from-slate-100 dark:to-slate-400 bg-clip-text text-transparent">
+        <h1 className="font-grotesk text-5xl p-2 md:text-6xl font-bold tracking-normal bg-gradient-to-b from-slate-500 to-slate-900 dark:from-slate-100 dark:to-slate-400 bg-clip-text text-transparent">
           Hytale Modding
         </h1>
         <div className="w-24 h-1 bg-yellow-600 mx-auto" />
