@@ -1,277 +1,277 @@
 ---
-title: 06 - Methods (Functions)
-description: Learn how to organize and reuse code with methods.
+title: 06 - Metodes (Funkcijas)
+description: Uzziniet, kā organizēt un atkārtoti izmantot kodu, izmantojot metodes.
 ---
 
-Methods are reusable blocks of code that perform specific tasks. They help you avoid repeating code and make your programs easier to understand.
+Metodes ir atkārtoti izmantojami koda bloki, kas veic konkrētus uzdevumus. Tie palīdz izvairīties no kodēšanas atkārtošanas un padara programmas vieglāk saprotamas.
 
-## What is a Method?
+## Kas ir Metode?
 
-Think of a method as a recipe. You define it once, then use it whenever you need it.
+Iedomājies, ka metode ir recepte. Tu to definē vienreiz, pēc tam izmanto pēc nepieciešamības.
 
 ```java tab="Code"
 public class Game {
     public static void main(String[] args) {
-        greet();        // Call the method
-        greet();        // Call it again!
+        sveiciens();        // Izsauc metodi
+        sveiciens();        // Izsauc vēlreiz!
     }
     
-    // Method definition
-    public static void greet() {
-        System.out.println("Welcome to Hytale!");
+    // Metodes definīcija
+    public static void sveiciens() {
+        System.out.println("Sveicināts Hytale!");
     }
 }
 ```
 
 ```text tab="Output"
-Welcome to Hytale!
-Welcome to Hytale!
+Sveicināts Hytale!
+Sveicināts Hytale!
 ```
 
-## Method Structure
+## Metodes Struktūra
 
 ```java
-public static void methodName() {
-//  ^      ^     ^      ^       ^
-//  |      |     |      |       |
-// access static return name  parameters
-// modifier       type
-    // Code goes here
+public static void metodesNosaukums() {
+//  ^      ^     ^          ^      ^
+//  |  statiska  |          |      |
+//pieejas    atgriež    nosaukums  parametri
+//modifikātors  tipu
+    // Izpildāmais kods iet šeit
 }
 ```
 
-We'll learn what `public` and `static` mean later. For now, just use them.
+Mēs iemācīsimies kas ir `public` un `static` vēlāk. Pagaidām vienkārši izmanto tos.
 
-## Methods with Parameters
+## Metodes ar Parametriem.
 
-Parameters let you pass data into methods:
+Parametri ļauj ievietot datus metodēs:
 
 ```java
-public static void greetPlayer(String name) {
-    System.out.println("Hello, " + name + "!");
+public static void sveicinatSpeletaju(String vards) {
+    System.out.println("Sveiki, " + vards + "!");
 }
 
 public static void main(String[] args) {
-    greetPlayer("Alice");  // Hello, Alice!
-    greetPlayer("Bob");    // Hello, Bob!
+    sveicinatSpeletaju("Alice");  // Sveiki, Alice!
+    sveicinatSpeletaju("Bob");    // Sveiki, Bob!
 }
 ```
 
-### Multiple Parameters
+### Vairāki Parametri
 
 ```java
-public static void dealDamage(String target, int damage) {
-    System.out.println(target + " takes " + damage + " damage!");
+public static void ievainot(String merkis, int dzivibas) {
+    System.out.println(merkis + " zaudē " + dzivibas + " dzīvības!");
 }
 
 public static void main(String[] args) {
-    dealDamage("Zombie", 20);    // Zombie takes 20 damage!
-    dealDamage("Skeleton", 15);  // Skeleton takes 15 damage!
+    ievainot("Zombijs", 20);    // Zombijs zaudē 20 dzīvības!
+    ievainot("Skelets", 15);  // Skelets zaudē 15 dzīvības!
 }
 ```
 
-<Callout type="info" title="Parameter Order Matters">
-  When calling a method, arguments must match the parameter order:
+<Callout type="info" title="Parametru Kārtība ir Svarīga">
+  Kad izsauc metodi, argumentiem jāsakrīt ar parametru kārtību:
 
   ```java
-  public static void createItem(String name, int quantity, double price) {
+  public static void izveidotPrieksmetu(String nosaukums, int daudzums, double cena) {
       // ...
   }
 
-  // Correct
-  createItem("Sword", 1, 50.0);
+  // Pareizi
+  izveidotPrieksmetu("Zobens", 1, 50.0);
 
-  // Wrong - Order matters!
-  createItem(1, "Sword", 50.0);  // Error!
+  // Nepareizi - Kārtība ir svarīga!
+  izveidotPrieksmetu(1, "Zobens", 50.0);  // Kļūda!
   ```
 </Callout>
 
-## Methods with Return Values
+## Metodes ar Atgriešanas vērtībām
 
-Methods can send data back using `return`:
+Metodes var sūtīt datus atpakaļ izmantojot `return`:
 
 ```java
-public static int add(int a, int b) {
+public static int saskaitit(int a, int b) {
     int sum = a + b;
     return sum;
 }
 
 public static void main(String[] args) {
-    int result = add(5, 3);
-    System.out.println(result);  // 8
+    int rezultats = saskaitit(5, 3);
+    System.out.println(rezultats);  // 8
 }
 ```
 
-The return type must match what you return:
+Return tipam jāsakrīt ar to, ko mēģini atgriezt:
 
-* `void` - Returns nothing
-* `int` - Returns an integer
-* `double` - Returns a decimal
-* `boolean` - Returns true/false
-* `String` - Returns text
+* `void` - Neatgriež neko
+* `int` - Atgriež skaitli
+* `double` - Atgriež decimālskaitli
+* `boolean` - Atgriež pareizi/nepareizi
+* `String` - Atgriež tekstu
 
 ```java
-public static String getItemName() {
-    return "Diamond Sword";
+public static String dabutPrieksmetaNosaukumu() {
+    return "Diamanta Zobens";
 }
 
-public static boolean isPlayerAlive(int health) {
-    return health > 0;
+public static boolean vaiSpeletajsDzivs(int veseliba) {
+    return veseliba > 0;
 }
 
-public static double calculateDamage(int attack, double multiplier) {
-    return attack * multiplier;
+public static double aprekinatBojajumus(int bojajumi, double reizinatajs) {
+    return bojajumi * reizinatajs;
 }
 ```
 
-<Callout type="warning" title="Return Stops Execution">
-  Once a method hits `return`, it immediately exits. Code after `return` won't run!
+<Callout type="warning" title="Atgriešana Aptur Izpildi">
+  Kad metode sasniedz `return`, tā uzreiz iziet no virknes. Kods pēc `return` netiks palaists!
 
   ```java
-  public static int getValue() {
+  public static int dabutVertibu() {
       return 10;
-      System.out.println("This never runs!");  // Unreachable code!
+      System.out.println("Šis nekad netiks palaists!");  // Neaizsniedzama koda daļa!
   }
   ```
 </Callout>
 
-## Practical Examples
+## Praktiski Piemēri
 
-### Health System
+### Veselības Sistēma
 
 ```java tab="Code"
-public static void displayHealth(String name, int health, int maxHealth) {
-    double percentage = (health * 100.0) / maxHealth;
-    System.out.println(name + ": " + health + "/" + maxHealth + 
-                      " (" + percentage + "%)");
+public static void paraditVeselibu(String vards, int veseliba, int maxVeseliba) {
+    double procents = (veseliba * 100.0) / maxVeseliba;
+    System.out.println(vards + ": " + veseliba + "/" + maxVeseliba + 
+                      " (" + procents + "%)");
 }
 
 public static void main(String[] args) {
-    displayHealth("Player", 75, 100);
-    displayHealth("Boss", 450, 500);
+    paraditVeselibu("Spēlētājs", 75, 100);
+    paraditVeselibu("Boss", 450, 500);
 }
 ```
 
 ```text tab="Output"
-Player: 75/100 (75.0%)
+Spēlētājs: 75/100 (75.0%)
 Boss: 450/500 (90.0%)
 ```
 
-### Damage Calculator
+### Bojājumu Kalkulātors
 
 ```java tab="Code"
-public static int calculateDamage(int baseAttack, int weaponDamage, boolean isCritical) {
-    int totalDamage = baseAttack + weaponDamage;
+public static int aprekinatBojajumus(int sitiens, int ierocaSpeks, boolean irKritisks) {
+    int galaPostijums = sitiens + ierocaSpeks;
     
-    if (isCritical) {
-        totalDamage *= 2;
+    if (irKritisks) {
+        galaPostijums *= 2;
     }
     
-    return totalDamage;
+    return galaPostijums;
 }
 
 public static void main(String[] args) {
-    int damage1 = calculateDamage(10, 15, false);  // 25
-    int damage2 = calculateDamage(10, 15, true);   // 50
+    int sitiens1 = aprekinatBojajumus(10, 15, false);  // 25
+    int sitiens2 = aprekinatBojajumus(10, 15, true);   // 50
     
-    System.out.println("Normal hit: " + damage1);
-    System.out.println("Critical hit: " + damage2);
+    System.out.println("Parasts sitiens: " + sitiens1);
+    System.out.println("Kritisks sitiens: " + sitiens2);
 }
 ```
 
-### Level Requirements
+### Līmeņa Prasības
 
 ```java tab="Code"
-public static int getXPForLevel(int level) {
-    return level * 100;
+public static int dabutXPLimeni(int limenis) {
+    return limenis * 100;
 }
 
-public static boolean canLevelUp(int currentXP, int currentLevel) {
-    int required = getXPForLevel(currentLevel + 1);
-    return currentXP >= required;
+public static boolean varPaceltLimeni(int cikXP, int kadsLimenis) {
+    int cikVajag = dabutXPLimeni(esosaisLimenis + 1);
+    return cikXP >= cikVajag;
 }
 
 public static void main(String[] args) {
-    int playerXP = 450;
-    int playerLevel = 4;
+    int speletajaXP = 450;
+    int speletajaLimenis = 4;
     
-    if (canLevelUp(playerXP, playerLevel)) {
-        System.out.println("You can level up!");
+    if (varPaceltLimeni(speletajaXP, speletajaLimenis)) {
+        System.out.println("Tu vari pacelties Līmenī!");
     } else {
-        int needed = getXPForLevel(playerLevel + 1) - playerXP;
-        System.out.println("Need " + needed + " more XP");
+        int cikVajag = dabutXPLimeni(speletajaLimenis + 1) - speletajaXP;
+        System.out.println("Vajag vēl " + cikVajag + " XP");
     }
 }
 ```
 
-### Distance Calculator
+### Distances Kalkulātors
 
 ```java tab="Code"
-public static double calculateDistance(int x1, int y1, int x2, int y2) {
+public static double aprekinatDistanci(int x1, int y1, int x2, int y2) {
     int dx = x2 - x1;
     int dy = y2 - y1;
     return Math.sqrt(dx * dx + dy * dy);
 }
 
-public static boolean isInRange(int x1, int y1, int x2, int y2, double range) {
-    double distance = calculateDistance(x1, y1, x2, y2);
-    return distance <= range;
+public static boolean irTuvuma(int x1, int y1, int x2, int y2, double attalums) {
+    double distance = aprekinatDistanci(x1, y1, x2, y2);
+    return distance <= attalums;
 }
 
 public static void main(String[] args) {
-    // Check if enemy is in attack range
-    if (isInRange(0, 0, 5, 5, 10.0)) {
-        System.out.println("Target in range!");
+    // Pārbaudi vai ienaidnieks ir pietiekami tuvu
+    if (irTuvuma(0, 0, 5, 5, 10.0)) {
+        System.out.println("Mērķis ir pietiekami tuvu!");
     }
 }
 ```
 
-## Method Overloading
+## Metodes Pārlādēšana
 
-You can have multiple methods with the same name but different parameters:
+Jums var būt vairākas metodes ar vienu un to pašu nosaukumu, bet dažādiem parametriem:
 
 ```java
-public static void displayMessage(String message) {
-    System.out.println(message);
+public static void paraditZinojumu(String zinojums) {
+    System.out.println(zinojums);
 }
 
-public static void displayMessage(String message, int times) {
-    for (int i = 0; i < times; i++) {
-        System.out.println(message);
+public static void paraditZinojumu(String zinojums, int reizes) {
+    for (int i = 0; i < reizes; i++) {
+        System.out.println(zinojums);
     }
 }
 
 public static void main(String[] args) {
-    displayMessage("Hello");           // Calls first version
-    displayMessage("Hello", 3);        // Calls second version
+    paraditZinojumu("Sveiki");           // Izsauks pirmo versiju
+    paraditZinojumu("Sveiki", 3);        // Izsauks otro versiju
 }
 ```
 
-<Callout type="info" title="Method Overloading Rules">
-  Methods are considered different if they have:
+<Callout type="info" title="Metodes Pārlādēšanas Noteikumi">
+  Metodes tiek uzskatītas par atšķirīgām, ja tām ir:
 
-  * Different number of parameters
-  * Different types of parameters
-  * Different order of parameters
+  * Dažāds daudzums parametru
+  * Dažādi tipa parametri
+  * Dažāda parametru kārtība
 
   ```java
   public static void test(int a) { }
-  public static void test(int a, int b) { }        // Different count
-  public static void test(double a) { }            // Different type
-  public static void test(String a, int b) { }     // Different types
-  public static void test(int a, String b) { }     // Different order
+  public static void test(int a, int b) { }        // Dažāds daudzums
+  public static void test(double a) { }            // Dažāds tips
+  public static void test(String a, int b) { }     // Dažādi tipi
+  public static void test(int a, String b) { }     // Dažāda kārtība
 
-  // Wrong - Only return type is different
+  // Nepareizi - Tikai atgriešanas tips nevar atšķirties
   public static int test(int a) { }
   ```
 </Callout>
 
-## Common Patterns in Hytale Modding
+## Biežākie pielietojumi Hytale Modificēšanā
 
-### Item Creation
+### Priekšmeta izveidošana
 
 ```java
-public static Item createItem(String name, int durability) {
+public static Item izveidotPrieksmetu(String nosaukums, int izturiba) {
     Item item = new Item();
     item.setName(name);
     item.setDurability(durability);
@@ -287,128 +287,128 @@ public static Item createPickaxe() {
 }
 ```
 
-### Block Placement Validation
+### Bloka Novietojuma Validācija
 
 ```java
-public static boolean canPlaceBlock(int x, int y, int z) {
-    // Check if position is valid
+public static boolean varNovietotBloku(int x, int y, int z) {
+    // Pārbaudi vai pozīcija pieļaujama
     if (y < 0 || y > 255) {
         return false;
     }
     
-    // Check if block already exists
-    if (isBlockAt(x, y, z)) {
+    // Pārbaudi vai bloks jau eksistē
+    if (vaiBloksIr(x, y, z)) {
         return false;
     }
     
     return true;
 }
 
-public static void placeBlock(int x, int y, int z, String type) {
-    if (canPlaceBlock(x, y, z)) {
-        // Place the block
-        System.out.println("Placed " + type + " at (" + x + ", " + y + ", " + z + ")");
+public static void novietotBloku(int x, int y, int z, String tips) {
+    if (varNovietotBloku(x, y, z)) {
+        // Novietot bloku
+        System.out.println("Novietots " + tips + " (" + x + ", " + y + ", " + z + ")");
     } else {
-        System.out.println("Cannot place block there!");
+        System.out.println("Nevar novietot bloku!");
     }
 }
 ```
 
-### Player State Checks
+### Spēlētāja Statusa Pārbaude
 
 ```java
-public static boolean isLowHealth(int health, int maxHealth) {
-    return (health * 100.0 / maxHealth) < 25;
+public static boolean irZemaVeseliba(int veseliba, int maxVeseliba) {
+    return (veseliba * 100.0 / maxVeseliba) < 25;
 }
 
-public static String getHealthStatus(int health, int maxHealth) {
-    double percentage = (health * 100.0) / maxHealth;
+public static String dabutVeselibasStatusu(int veseliba, int maxVeseliba) {
+    double procenti = (veseliba * 100.0) / maxVeseliba;
     
-    if (percentage >= 75) {
-        return "Healthy";
-    } else if (percentage >= 50) {
-        return "Injured";
-    } else if (percentage >= 25) {
-        return "Critical";
+    if (procenti >= 75) {
+        return "Vesels";
+    } else if (procenti >= 50) {
+        return "Ievainots";
+    } else if (procenti >= 25) {
+        return "Kritiski";
     } else {
-        return "Near Death";
+        return "Duvu nāvei";
     }
 }
 ```
 
-## Best Practices
+## Labākā Prakse
 
-<Callout type="info" title="Method Naming">
-  Use descriptive verb-based names that explain what the method does:
+<Callout type="info" title="Metožu Nosaukšana">
+  Izmantojiet aprakstošus darbības vārdu nosaukumus, kas paskaidro, ko šī metode dara:
 
   ```java
-  // Good
+  // Labi
   public static void calculateDamage() { }
   public static boolean isPlayerAlive() { }
   public static String getItemName() { }
   public static void displayInventory() { }
 
-  // Bad
-  public static void dmg() { }        // Too short
-  public static void method1() { }    // Not descriptive
-  public static void stuff() { }      // Too vague
+  // Slikti
+  public static void dmg() { }        // Par īsu
+  public static void method1() { }    // Neko neizsaka
+  public static void stuff() { }      // Par plašu
   ```
 </Callout>
 
-## Practice Exercises
+## Praktiskie Vingrinājumi
 
-1. **Temperature Converter**: Write methods to convert:
-   * Celsius to Fahrenheit: `(C × 9/5) + 32`
-   * Fahrenheit to Celsius: `(F - 32) × 5/9`
+1. **Temperatūras pārveidotājs**: Ievadi konvertēšanas metodes:
+   * Celsius uz Fahrenheit: `(C × 9/5) + 32`
+   * Fahrenheit uz Celsius: `(F - 32) × 5/9`
 
-2. **Circle Calculator**: Create methods that calculate:
-   * Area: `π × radius²`
-   * Circumference: `2 × π × radius`
-   * Use `Math.PI` for π
+2. **Apļa kalkulators**: Ievadi metodes, kas aprēķina:
+   * Laukumu `π × radius²`
+   * Apkārtmēru: `2 × π × radius`
+   * Izmanto `Math.PI` priekš π
 
-3. **Item Durability**: Write these methods:
-   * `damageItem(int current, int damage)` - returns new durability
-   * `isBroken(int durability)` - returns true if durability is less than or equal to 0
-   * `repairItem(int current, int max)` - returns max durability
+3. **Priekšmeta izturība**: Ievadi šīs metodes:
+   * `damageItem(int current, int damage)` - atgriež jaunu izturību
+   * `isBroken(int durability)` — atgriež true, ja izturība ir mazāka vai vienāda ar 0
+   * `repairItem(int current, int max)` - atgriež maksimālo izturību
 
-4. **Password Validator**: Create a method that checks if a password is valid:
-   * At least 8 characters long
-   * Contains at least one number
-   * Returns true if valid, false otherwise
+4. **Paroļu validators**: Izveido metodi, kas pārbauda, vai parole ir derīga:
+   * Vismaz 8 rakstzīmes
+   * Satur vismaz vienu skaitli
+   * Atgriež true, ja pareizi, savādāk false
 
-## Common Mistakes
+## Bieži sastopamās kļūdas
 
 ```java
-// Wrong - Forgetting return statement
+// Nepareizi - Aizmirsām atgriezt int vērtību
 public static int getValue() {
     int x = 10;
-    // Forgot to return!
+    // Aizmirsām atgriezt vērtību ar return!
 } !
 
-// Correct
+// Pareizi
 public static int getValue() {
     int x = 10;
     return x;
 }
 
-// Wrong - Wrong return type
-public static int getText() {
-    return "Hello";  // Error! Should return int, not String
+// Nepareizi - Nepareizā return vērtība
+public static int dabutTekstu() {
+    return "Hello";  // Kļūda Būtu jāatgriež int, nevis String
 }
 
-// Correct
-public static String getText() {
-    return "Hello";
+// Pareizi
+public static String dabutTekstu() {
+    return "Sveiki";
 }
 
-// Wrong - Not calling the method
+// Nepareizi - Neizsāuc metodi
 public static void main(String[] args) {
-    greet;  // Error! Missing ()
+    sveicinat;  // Kļūda! Trūkst ()
 }
 
-// Correct
+// Pareizi
 public static void main(String[] args) {
-    greet();
+    sveicinat();
 }
 ```
 

@@ -6,14 +6,16 @@
     "search": "Buscar"
   },
   "home": {
-    "title": "Hytale Modding",
+    "title": "Hytale Modding #1 em {flipwords}",
     "flipwords": [
       "Guias",
       "Documentação",
-      "Recursos"
+      "Ferramentas",
+      "Tutoriais"
     ],
-    "description": "A fonte número um da comunidade para mods de Hytale, trazendo guias compreensíveis, documentação detalhada e ferramentas essenciais para dar o pontapé inicial na sua jornada de criação.",
+    "description": "Somos a fonte de recurso n.º 1 da comunidade para criação de mods de Hytale. Temos guias intuitivos e completos, documentação detalhada e todas as ferramentas essenciais para começar a sua aventura criativa.",
     "documentation": "Documentação",
+    "forum": "Fórum",
     "discord": "Participe da comunidade",
     "memberCount": "{count} membros"
   },

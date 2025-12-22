@@ -1,19 +1,19 @@
 ---
-title: Desenvolvimento "Servidor-Primeiro"
-description: Informações sobre o significado de "desenvolvimento focado ao servidor", e mais.
+title: Desenvolvimento Server-First
+description: Informações sobre o significado de "desenvolvimento server-first" e mais.
 ---
 
-Hytale está sendo desenvolvido com uma abordagem de "Servidor-Primeiro". Isso significa que o servidor é considerado a fonte oficial do estado e da lógica do jogo, enquanto o cliente lida principalmente com a entrada de renderização e usuário.
+O Hytale está sendo desenvolvido com uma abordagem de "server-first". Isso significa que o servidor é considerado a fonte oficial do estado e da lógica do jogo, enquanto o cliente lida principalmente com a entrada de renderização e usuário.
 
-## O que significa "Servidor-Primeiro"?
+## O que significa "server-first"?
 
-Em uma arquitetura Servidor-Primeiro, o servidor é responsável por gerenciar o mundo do jogo, aplicando as regras e processando as ações dos jogadores. O cliente conecta-se ao servidor para receber atualizações sobre o estado do jogo e enviar entradas dos jogadores. Esta abordagem ajuda a garantir a consistência e a justiça em ambientes multijogadores, já que o servidor tem controle sobre a lógica do jogo.
+Em uma arquitetura server-first, o servidor é responsável por gerenciar o mundo do jogo, aplicando as regras e processando as ações dos jogadores. O cliente conecta-se ao servidor para receber atualizações sobre o estado do jogo e enviar entradas dos jogadores. Esta abordagem ajuda a garantir a consistência e a justiça em ambientes multijogadores, já que o servidor tem controle sobre a lógica do jogo.
 
-## Benefícios do desenvolvimento Servidor-Primeiro
+## Benefícios do desenvolvimento server-first
 
 * **Consistência**: Como o servidor é a fonte autoritária, todos os jogadores experimentam o mesmo estado do jogo, reduzindo discrepâncias e trapaças.
-* **Escalabilidade**: Arquiteturas Servidor-Primeiro podem ser mais facilmente dimensionadas para acomodar números grandes
-  de jogadores, já que o servidor pode gerenciar recursos e distribuir carga de forma eficaz.
+* **Escalabilidade**: Arquiteturas server-first podem ser mais facilmente dimensionadas para acomodar números grandes
+  de jogadores, já que o servidor pode gerenciar recursos e distribuir o carregamento de forma eficaz.
 * **Segurança**: Centralizando a lógica do jogo no servidor, torna-se mais difícil para os jogadores manipularem o estado do jogo injustamente.
 * **Atualizações mais fáceis**: Atualizações e alterações podem ser feitas no lado do servidor sem exigir que os jogadores baixem novas versões do client.
 * **Apenas uma versão**: não haverá seletor de versão para o client do Hytale, o que significa que os donos de servidores não precisam suportar várias versões e podem confiar que todos sejam do cliente mais recente. Isso ajudará tanto os donos de servidores quanto os criadores de mods.
@@ -22,8 +22,8 @@ Em uma arquitetura Servidor-Primeiro, o servidor é responsável por gerenciar o
 
 Criadores de mods irão interagir principalmente com os componentes do lado servidor de Hytale. Isso significa que todos os mods focarão em alterar a lógica, regras e comportamentos que são gerenciados pelo servidor. Mods client-side não são permitidos (conforme as informações disponível no momento)
 
-De forma geral, a abordagem "focada ao servidor" em Hytale visa criar uma experiência multiplayer robusta e justa, ao mesmo tempo que fornece aos criadores de mods ferramentas poderosas para personalizar e aprimorar o jogo.
+De forma geral, a abordagem server-first em Hytale tem como foco criar uma experiência multijogador robusta e justa. Além disso, fornece ferramentas poderosas aos criadores de mods para personalizarem e aprimorarem o jogo.
 
 ## Conclusão
 
-O modelo de desenvolvimento focado ao servidor é um aspecto chave da arquitetura do Hytale, garantindo uma experiência multiplayer segura e consistente. Criadores de mods devem focar em modificações server-side para aproveitar completamente as capacidades desta abordagem e criar conteúdo cativante para os jogadores.
+O modelo de desenvolvimento server-first é um aspecto fundamental na arquitetura do Hytale, garantindo uma experiência multijogador segura e consistente. Criadores de mods devem focar em modificações server-side para aproveitar completamente as capacidades desta abordagem e criar conteúdo cativante para os jogadores.

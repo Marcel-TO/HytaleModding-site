@@ -1,0 +1,493 @@
+---
+title: 09 - Работа со строками
+description: Освойте обработку текста и операции со строками в Java.
+---
+
+Строки один из самых часто используемых типов в Java. Они нужны для работы с именами игроков, сообщениями в чате, описаниями предметов и вообще почти всем, что ты видишь.
+
+## Основы строк
+
+Строки — это объекты, которые хранят текст:
+
+```java
+String name = "Simon";
+String message = "Welcome to Hytale!";
+String empty = "";
+```
+
+<Callout type="warning" title="Строки являются неизменяемыми">
+  После создания строку **нельзя изменить**.  Методы, которые выглядят как изменяющие строку, на самом деле создают новую!
+
+  ```java
+  String text = "Hello";
+  text.toUpperCase();           // Создает "HELLO", но не сохраняет
+  System.out.println(text);     // Все еще "Hello"
+
+  String upper = text.toUpperCase();  // ✓ Сохраняем результат
+  System.out.println(upper);          // "HELLO"
+  ```
+</Callout>
+
+## Методы строк
+
+### Длина
+
+```java
+String name = "Alice";
+int length = name.length();
+System.out.println(length);  // 5
+```
+
+### Изменение регистра
+
+```java
+String text = "Hello World";
+String upper = text.toUpperCase();  // "HELLO WORLD"
+String lower = text.toLowerCase();  // "hello world"
+```
+
+### Проверка контента
+
+```java
+String message = "Welcome to Hytale";
+
+boolean hasHytale = message.contains("Hytale");  // true
+boolean hasMinecraft = message.contains("Minecraft");  // false
+
+boolean starts = message.startsWith("Welcome");  // true
+boolean ends = message.endsWith("Hytale");  // true
+```
+
+### Извлечение частей строки
+
+```java
+String text = "Hello World";
+
+char first = text.charAt(0);      // 'H'
+char last = text.charAt(10);      // 'd'
+
+String sub1 = text.substring(0, 5);   // "Hello"
+String sub2 = text.substring(6);      // "World"
+```
+
+<Callout type="info" title="Индексы подстроки">
+  `substring(start, end)` включает `start`, но исключает `end`:
+
+  ```java
+  String text = "Hytale";
+  //             012345 (индексы)
+
+  text.substring(0, 2);  // "Hy" (индексы 0 и 1)
+  text.substring(2, 6);  // "tale" (индексы 2, 3, 4, 5)
+  text.substring(2);     // "tale" (от 2 до конца)
+  ```
+</Callout>
+
+### Замена текста
+
+```java
+String text = "I love Minecraft";
+String replaced = text.replace("Minecraft", "Hytale");
+System.out.println(replaced);  // "I love Hytale"
+
+String noSpaces = "Hello World".replace(" ", "");
+System.out.println(noSpaces);  // "HelloWorld"
+```
+
+### Удаление пробелов
+
+```java
+String messy = "  Hello World  ";
+String clean = messy.trim();
+System.out.println(clean);  // "Hello World" (нет пробелов в начале и конце строки)
+```
+
+### Разделение строк
+
+```java
+String command = "give player sword 5";
+String[] parts = command.split(" ");
+
+System.out.println(parts[0]);  // "give"
+System.out.println(parts[1]);  // "player"
+System.out.println(parts[2]);  // "sword"
+System.out.println(parts[3]);  // "5"
+```
+
+## Сравнение строк
+
+<Callout type="warning" title="Никогда не используйте == для строк">
+  Всегда используйте `.equals()` для сравнения содержимого строк!
+
+  ```java
+  String name1 = "Steve";
+  String name2 = "Steve";
+
+  // Неправильно - сравнивает ссылки на объекты
+  if (name1 == name2) {
+      System.out.println("Same");
+  }
+
+  // Правильно - сравнивает текст
+  if (name1.equals(name2)) {
+      System.out.println("Same");
+  }
+
+  // Сравнение без учета регистра
+  if (name1.equalsIgnoreCase("steve")) {
+      System.out.println("Same (ignoring case)");
+  }
+  ```
+</Callout>
+
+### Сравнение порядка
+
+```java
+String a = "Apple";
+String b = "Banana";
+
+int result = a.compareTo(b);
+// result < 0 если a идет перед b
+// result == 0 если a равно b
+// result > 0 если a идет после b
+
+if (a.compareTo(b) < 0) {
+    System.out.println(a + " идёт раньше " + b);
+}
+```
+
+## Конкатенация строк
+
+### Использование оператора +
+
+```java
+String first = "Hello";
+String second = "World";
+String combined = first + " " + second;  // "Hello World"
+
+int score = 100;
+String message = "Счёт: " + score;  // "Счёт: 100"
+```
+
+### Использование concat()
+
+```java
+String result = "Hello".concat(" World");  // "Hello World"
+```
+
+### Создание длинных строк
+
+Для множества конкатенаций, лучше использовать `StringBuilder`:
+
+```java
+StringBuilder builder = new StringBuilder();
+builder.append("Игрок: ");
+builder.append("Алиса");
+builder.append(", Уровень: ");
+builder.append(10);
+builder.append(", Здоровья: ");
+builder.append(100);
+
+String result = builder.toString();
+System.out.println(result);
+// "Игрок: Алиса, Уровень: 10, Здоровья: 100"
+```
+
+<Callout type="info" title="Почему StringBuilder">
+  Обычная конкатенация создает много временных строк:
+
+  ```java
+  // Неэффективно - создает много временых строк
+  String result = "";
+  for (int i = 0; i < 1000; i++) {
+      result = result + i;  // Создает 1000 временных строк!
+  }
+
+  // Эффективно - StringBuilder изменяемый
+  StringBuilder sb = new StringBuilder();
+  for (int i = 0; i < 1000; i++) {
+      sb.append(i);  // Изменяет один объект
+  }
+  String result = sb.toString();
+  ```
+
+  Используйте `StringBuilder` при создании строк в циклах!
+</Callout>
+
+## Практические примеры
+
+### Разбор команды игрока
+
+```java
+public class CommandParser {
+    public static void parseCommand(String command) {
+        // "/give Steve diamond_sword 1"
+        String[] parts = command.split(" ");
+        
+        String action = parts[0].replace("/", "");  // "give"
+        String player = parts[1];                   // "Steve"
+        String item = parts[2];                     // "diamond_sword"
+        int amount = Integer.parseInt(parts[3]);    // 1
+        
+        System.out.println("Action: " + action);
+        System.out.println("Player: " + player);
+        System.out.println("Item: " + item);
+        System.out.println("Amount: " + amount);
+    }
+    
+    public static void main(String[] args) {
+        parseCommand("/give Steve diamond_sword 1");
+    }
+}
+```
+
+### Форматирование отображаемого имени игрока
+
+```java
+public class PlayerFormatter {
+    public static String formatName(String name, int level, String rank) {
+        StringBuilder formatted = new StringBuilder();
+        
+        if (rank != null && !rank.isEmpty()) {
+            formatted.append("[").append(rank).append("] ");
+        }
+        
+        formatted.append(name);
+        formatted.append(" (Lv. ").append(level).append(")");
+        
+        return formatted.toString();
+    }
+    
+    public static void main(String[] args) {
+        String display1 = formatName("Alice", 10, "VIP");
+        System.out.println(display1);  // "[VIP] Alice (Lv. 10)"
+        
+        String display2 = formatName("Bob", 5, null);
+        System.out.println(display2);  // "Bob (Lv. 5)"
+    }
+}
+```
+
+### Валидация никнейма
+
+```java
+public class UsernameValidator {
+    public static boolean isValid(String username) {
+        // Правила: 3-16 символов, только буквы и цифры
+        
+        if (username == null || username.isEmpty()) {
+            return false;
+        }
+        
+        username = username.trim();
+        
+        if (username.length() < 3 || username.length() > 16) {
+            return false;
+        }
+        
+        for (int i = 0; i < username.length(); i++) {
+            char c = username.charAt(i);
+            if (!Character.isLetterOrDigit(c)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(isValid("Steve"));      // true
+        System.out.println(isValid("Player_123")); // false (есть нижнее подчеркивание)
+        System.out.println(isValid("ab"));         // false (слишком короткое)
+        System.out.println(isValid(""));           // false (пустое)
+    }
+}
+```
+
+### Создание описания предмета
+
+```java
+public class ItemDescription {
+    public static String buildDescription(String name, String rarity, 
+                                         int damage, int durability) {
+        StringBuilder desc = new StringBuilder();
+        
+        // Заголовок с цветом редкости
+        desc.append(getRarityColor(rarity));
+        desc.append(name);
+        desc.append("\n");
+        
+        // Характеристики
+        desc.append("Damage: ").append(damage).append("\n");
+        desc.append("Durability: ").append(durability).append("/");
+        desc.append(durability).append("\n");
+        desc.append("Rarity: ").append(rarity);
+        
+        return desc.toString();
+    }
+    
+    private static String getRarityColor(String rarity) {
+        switch (rarity.toLowerCase()) {
+            case "legendary": return "§6";  // Золото
+            case "epic": return "§5";       // Фиолетовый
+            case "rare": return "§9";       // Синий
+            case "common": return "§f";     // Белый
+            default: return "§7";           // Серый
+        }
+    }
+    
+    public static void main(String[] args) {
+        String desc = buildDescription("Excalibur", "Legendary", 50, 1000);
+        System.out.println(desc);
+    }
+}
+```
+
+### Фильтр чата
+
+```java
+public class ChatFilter {
+    private static String[] bannedWords = {"badword1", "badword2"};
+    
+    public static String filterMessage(String message) {
+        String filtered = message.toLowerCase();
+        
+        for (String word : bannedWords) {
+            if (filtered.contains(word)) {
+                String replacement = "*".repeat(word.length());
+                filtered = filtered.replace(word, replacement);
+            }
+        }
+        
+        return filtered;
+    }
+    
+    public static void main(String[] args) {
+        String message = "This is a badword1 test";
+        String clean = filterMessage(message);
+        System.out.println(clean);  // "this is a ******** test"
+    }
+}
+```
+
+## Форматирование строк
+
+### Использование String.format()
+
+```java
+String name = "Alice";
+int level = 10;
+double health = 85.5;
+
+String formatted = String.format("%s is level %d with %.1f%% health", 
+                                 name, level, health);
+System.out.println(formatted);
+// "Alice is level 10 with 85.5% health"
+```
+
+<Callout type="info" title="Спецификаторы формата">
+  Распространенные коды формата:
+
+  - `%s` - строка
+  - `%d` - целое число
+  - `%f` - число с плавающей точкой
+  - `%.2f` - число с плавающей точкой с 2 знаками после запятой
+  - `%n` - новая строка (независимо от платформы)
+
+  ```java
+  String.format("Name: %s", "Steve");          // "Name: Steve"
+  String.format("Level: %d", 10);              // "Level: 10"
+  String.format("Health: %.1f", 85.5);         // "Health: 85.5"
+  String.format("Position: (%d, %d, %d)", 
+                10, 64, -5);                    // "Position: (10, 64, -5)"
+  ```
+</Callout>
+
+## Распространенные операции со строками
+
+### Проверка, пустая ли строка
+
+```java
+String text = "";
+
+// Проверка на пустую строку или null
+if (text == null || text.isEmpty()) {
+    System.out.println("Empty!");
+}
+
+// Проверка на пустую строку, null или только пробелы
+if (text == null || text.trim().isEmpty()) {
+    System.out.println("Empty or whitespace!");
+}
+```
+
+### Подсчет вхождений символа или подстроки в строке
+
+```java
+public static int countOccurrences(String text, String target) {
+    int count = 0;
+    int index = 0;
+    
+    while ((index = text.indexOf(target, index)) != -1) {
+        count++;
+        index += target.length();
+    }
+    
+    return count;
+}
+
+// Использование
+int count = countOccurrences("hello hello world", "hello");
+System.out.println(count);  // 2
+```
+
+### Разворот строки
+
+```java
+public static String reverse(String text) {
+    StringBuilder sb = new StringBuilder(text);
+    return sb.reverse().toString();
+}
+
+// Использование
+String reversed = reverse("Hello");
+System.out.println(reversed);  // "olleH"
+```
+
+### Проверка на Палиндром
+
+```java
+public static boolean isPalindrome(String text) {
+    String cleaned = text.toLowerCase().replaceAll("[^a-z0-9]", "");
+    String reversed = new StringBuilder(cleaned).reverse().toString();
+    return cleaned.equals(reversed);
+}
+
+// Usage
+System.out.println(isPalindrome("racecar"));     // true
+System.out.println(isPalindrome("hello"));       // false
+```
+
+## Практические задания
+
+1. **Проверка имени пользователя**: Напишите метод, который проверяет, соответствует ли имя пользователя следующим условиям:
+   - От 3 до 16 символов
+   - Содержит только буквы, цифры и нижние подчеркивания
+   - Не начинается с цифры
+   - Возвращает true, в случае успешной валидации, в противном случае false
+
+2. **Разбор команд**: Разберите команду в формате: `/teleport x y z`
+   - Извлеките координаты
+   - Преобразуйте в числах
+   - Возвращайте массив из трех значений
+
+3. **Форматирование чата**: Создайте метод, который форматирует сообщения в чате:
+   - Ввод: имя игрока, ранг, сообщение
+   - Вывод: `"[RANK] PlayerName: message"`
+   - Если ранга нет, то просто `"PlayerName: message"`
+
+4. **Подсчет слов**: Посчитайте, сколько слов в предложении(слова разделены пробелами)
+
+5. **Заглавные символы**: Преобразуйте строку в заглавный стиль:
+   - Ввод: `"hello world"`
+   - Вывод: `"Hello World"`

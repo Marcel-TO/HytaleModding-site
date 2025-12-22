@@ -1,19 +1,21 @@
 {
-  "displayName": "Русский",
+  "displayName": "Английский",
   "nav": {
-    "title": "Hytale Modding",
+    "title": "Моддинг Hytale",
     "documentation": "Документация",
-    "search": "Search"
+    "search": "Поиск"
   },
   "home": {
     "title": "#1 Ресурс для Моддинга Hytale",
     "flipwords": [
       "Гиды",
       "Документация",
-      "Ресурсы"
+      "Ресурсы",
+      "Инструкции"
     ],
     "description": "Лучший ресурс для моддинг комьюнити Hytale, включающий в себя\nподробные гайды, документацию и все необходимые инструменты, чтобы начать свое путешествие в мир моддинга.",
     "documentation": "Документация",
+    "forum": "Forum",
     "discord": "Присоединись нашей коммьюнити!",
     "memberCount": "{count} Участников"
   },
@@ -23,35 +25,35 @@
   },
   "meta": {
     "established_information": {
-      "title": "Established Information",
-      "separator": "Specific Categories",
+      "title": "Известная информация",
+      "separator": "Особые категории",
       "server": {
-        "title": "Server",
+        "title": "Сервер",
         "content_categories": {
-          "title": "Content Categories"
+          "title": "Категории Контента"
         },
         "interface": {
-          "title": "Interface"
+          "title": "Интерфейс"
         }
       },
       "client": {
-        "title": "Client"
+        "title": "Клиент"
       },
       "gameplay": {
-        "title": "Gameplay"
+        "title": "Игра"
       },
       "misc": {
-        "title": "Miscellaneous"
+        "title": "Прочее"
       }
     },
     "guides": {
-      "title": "Guides",
+      "title": "Гиды",
       "java_basics": {
-        "title": "Java Basics"
+        "title": "Основы Java"
       }
     },
     "community_projects": {
-      "title": "Community Projects"
+      "title": "Проекты от коммьюнити"
     }
   }
 }

@@ -10,10 +10,12 @@
     "flipwords": [
       "Guides",
       "Documentation",
-      "Resources"
+      "Resources",
+      "Tutorials"
     ],
     "description": "The number one community resource for modding Hytale, featuring\ncomprehensive guides, detailed documentation, and essential tools to\nkickstart your modding journey.",
     "documentation": "Docs",
+    "forum": "Forum",
     "discord": "Join the community!",
     "memberCount": "{count} Members"
   },

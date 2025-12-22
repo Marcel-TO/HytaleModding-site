@@ -7,9 +7,15 @@
   },
   "home": {
     "title": "#1 Resource for Hytale Modding {flipwords}",
-    "flipwords": ["Guides", "Documentation", "Resources"],
+    "flipwords": [
+      "Guides",
+      "Documentation",
+      "Resources",
+      "Tutorials"
+    ],
     "description": "The number one community resource for modding Hytale, featuring\ncomprehensive guides, detailed documentation, and essential tools to\nkickstart your modding journey.",
     "documentation": "Docs",
+    "forum": "Forum",
     "discord": "Tham gia vào cộng đồng discord ",
     "memberCount": "{count} Members"
   },

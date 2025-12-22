@@ -5,12 +5,12 @@ description: Aprenda a como organizar e reutilizar o código com métodos.
 
 Os métodos são blocos de código reutilizáveis ​​que executam tarefas específicas. Elas ajudam você a evitar a repetição de código e tornam seus programas mais fáceis de entender.
 
-## O que é um Método?
+## O que é um método?
 
 Imagine um "método" como uma receita. Defina-o uma vez e então o usa sempre que precisar.
 
 ```java tab="Code"
-public class Jogo {
+public class Game {
     public static void main(String[] args) {
         greet();        // Chama o método
         greet();        // Chama-o novamente!
@@ -28,27 +28,27 @@ Bem-vindo(a) ao Hytale!
 Bem-vindo(a) ao Hytale!
 ```
 
-## Estrutura do Método
+## Estrutura do método
 
 ```java
 public static void methodName() {
 //  ^      ^     ^      ^       ^
 //  |      |     |      |       |
-// Acessar os parâmetros de nome de retornos estáticos
+// Acessa os parâmetros de nome de retornos estáticos
 // Tipo do modificador
     // O código vai aqui
 }
 ```
 
-Depois, aprenderemos o que significam `public` e `static`. Por enquanto, apenas os use.
+Depois, aprenderemos o que significam os métodos `public` e `static`. Por enquanto, apenas os use.
 
-## Métodos com Parâmetros
+## Métodos com parâmetros
 
 Os parâmetros permitem passar dados para os métodos:
 
 ```java
-public static void greetPlayer(String nome) {
-    System.out.println("Olá, " + nome + "!");
+public static void greetPlayer(String name) {
+    System.out.println("Olá, " + name + "!");
 }
 
 public static void main(String[] args) {
@@ -57,11 +57,11 @@ public static void main(String[] args) {
 }
 ```
 
-### Múltiplos Parâmetros
+### Múltiplos parâmetros
 
 ```java
-public static void dealDamage(String alvo, int dano) {
-    System.out.println(alvo + " recebeu " + dano + " de dano!");
+public static void dealDamage(String target, int damage) {
+    System.out.println(target + " recebeu " + damage + " de dano!");
 }
 
 public static void main(String[] args) {
@@ -70,11 +70,11 @@ public static void main(String[] args) {
 }
 ```
 
-<Callout type="info" title="A Ordem dos Parâmetros Importa">
+<Callout type="info" title="A ordem dos parâmetros importa">
   Ao chamar um método, os argumentos devem corresponder à ordem dos parâmetros:
 
   ```java
-  public static void createItem(String nome, int quantidade, double preço) {
+  public static void createItem(String name, int quantity, double price) {
       // ...
   }
 
@@ -86,7 +86,7 @@ public static void main(String[] args) {
   ```
 </Callout>
 
-## Métodos com Valores de Retorno
+## Métodos com valores de retorno
 
 Os métodos podem enviar dados de volta usando o `return`:
 

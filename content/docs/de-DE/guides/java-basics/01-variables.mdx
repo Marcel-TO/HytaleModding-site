@@ -3,19 +3,19 @@ title: 01 - Variablen & Datentypen
 description: Eine Einführung in Variablen und Datentypen in der Java-Programmierung.
 ---
 
-Variablen sind Container, die Daten in Ihrem Programm speichern. Stellen Sie sich diese als beschriftete Boxen vor, in denen Sie verschiedene Arten von Informationen legen können.
+Variablen sind Container, die Daten in deinem Programm speichern. Stell dir diese als beschriftete Boxen vor, in die du verschiedene Arten von Informationen legen kannst.
 
 ## Was ist eine Variable?
 
 Eine Variable hat drei Hauptkomponenten:
 
 1. **Typ**: Welche Art von Daten sie enthält (z. B. Integer, String, Boolean)
-2. **Name**: Die Bezeichnung, die Sie verwenden, um auf die Variable zu verweisen
+2. **Name**: Die Bezeichnung, die du verwendest, um auf die Variable zu verweisen
 3. **Wert**: Die darin enthaltenen Daten
 
 ## Deklarieren/Erstellen von Variablen
 
-In Java müssen Sie eine Variable deklarieren, bevor Sie sie verwenden, so wie Sie eine Box benötigen, bevor Sie etwas in sie ablegen können. Die Syntax lautet:
+In Java musst du eine Variable deklarieren bevor du sie verwenden kannst, so wie du eine Box benötigst bevor du etwas in sie ablegen kannst. Die Syntax lautet:
 
 ```java
 int alter;
@@ -26,25 +26,25 @@ int alter = 18; // Deklaration und Zuweisung in einer Zeile
 
 ## Primitive Datentypen
 
-Sie fragen sich vielleicht, was "int" bedeutet. Es ist ein primitiver Datentyp in Java. Java hat 8 primitiven Datentypen. Hier sind die wichtigsten für Modding:
+Du fragst dich vielleicht, was "int" bedeutet. Es ist ein primitiver Datentyp in Java. Java hat 8 primitiven Datentypen. Hier sind die wichtigsten für Modding:
 
-| Datentyp | Beschreibung                       | Beispiel                   |
-| -------- | ---------------------------------- | -------------------------- |
-| int      | Ganze Zahlen                       | `int punkte = 100;`        |
-| double   | Dezimalzahlen                      | `double pi = 3.14;`        |
-| boolean  | Wahr oder falsch (true oder false) | `boolean istAktiv = true;` |
-| char     | Einzelnes Zeichen                  | `char note = 'A';`         |
-| String   | Zeichenfolge (Text)                | `String name = "Hytale";`  |
+| Datentyp | Beschreibung                          | Beispiel                   |
+| -------- | ------------------------------------- | -------------------------- |
+| int      | Ganze Zahlen                          | `int punkte = 100;`        |
+| double   | Dezimalzahlen (mit Punkt statt Komma) | `double pi = 3.14;`        |
+| boolean  | Wahr oder falsch (true oder false)    | `boolean istAktiv = true;` |
+| char     | Einzelnes Zeichen                     | `char note = 'A';`         |
+| String   | Zeichenfolge (Text)                   | `String name = "Hytale";`  |
 
 ## Typumwandlung
 
-Manchmal möchten Sie vielleicht nicht, dass eine Variable den gleichen Typ beibehält. Sie können zwischen den Typen umwandeln:
+Manchmal möchtest du vielleicht nicht, dass eine Variable den gleichen Typ beibehält. Du kannst zwischen den Typen umwandeln:
 
 ### Automatisch
 
 ```java
 int num = 10;
-double decimalNum = (double) num; // 10.0 - funktioniert automatisch
+double decimalNum = num; // 10.0 - funktioniert automatisch
 ```
 
 ### Manuell (Casting)
@@ -56,7 +56,7 @@ int num = (int) decimalNum; // 9 - Nachkommastellen fallen weg
 
 ## Konstanten
 
-Wenn Sie eine Variable wollen, die sich nicht ändern sollte, verwenden Sie das `final` Schlüsselwort:
+Wenn du eine Variable willst, die sich nicht ändern sollte, verwendest du das `final` Schlüsselwort:
 
 ```java
 final double PI = 3.14159;
@@ -66,12 +66,12 @@ final double PI = 3.14159;
 
 ## Üben
 
-Es ist am besten, das zu üben, was Sie gerade gelernt haben - schauen sie jetzt nicht nach oben und probieren Sie es selber zu machen. Schauen Sie nur nach oben, wenn Sie hängen bleiben!
+Es ist am besten, das zu üben, was du gerade gelernt hast - schau jetzt nicht oben und probier es selber zu machen. Schau nur nach oben, wenn du nicht weiter weißt!
 
-1. Deklarieren Sie eine ganzzahlige Variable namens `leben` und setzen Sie diese auf 3.
+1. Deklariere eine ganzzahlige Variable namens `leben` und setzen Sie diese auf 3.
 2. Deklarieren Sie eine "double"-Variable namens „erdanziehung“ und setzen Sie diese auf 9,81.
-3. Deklarieren Sie eine "boolean"-Variable namens `istSpielVorbei` und setzen Sie diese auf false.
-4. Konvertieren Sie die Variable „leben“ in eine Dezimalzahl und speichern Sie diese in einer neuen Variable namens „lebenAlsDouble“.
-5. Deklarieren Sie eine Konstante namens `MAX_LEVEL` und setzen Sie diese auf 100.
+3. Deklariere eine "boolean"-Variable namens `istSpielVorbei` und setze diese auf false.
+4. Konvertiere die Variable „leben“ in eine Dezimalzahl und speichere diese in einer neuen Variable namens „lebenAlsDouble“.
+5. Deklariere eine Konstante namens `MAX_LEVEL` und setze diese auf 100.
 
-Super! Sie haben etwas über Variablen und Datentypen in Java gelernt. In der nächsten Lektion werden Sie etwas über Operatoren und Ausdrücke lernen.
+Super! Du hast etwas über Variablen und Datentypen in Java gelernt. In der nächsten Lektion wirst du etwas über Operatoren und Ausdrücke lernen.
