@@ -45,7 +45,7 @@ export default function SponsorsPage() {
 
           <div className="space-y-4 pt-8">
             <h3 className="text-xl font-semibold">Our Sponsors</h3>
-            <div className="space-y-3">
+            {/* <div className="space-y-3">
               {featuredSponsors.map((sponsor) => (
                 <a
                   key={sponsor.name}
@@ -64,7 +64,7 @@ export default function SponsorsPage() {
                   </div>
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           <div className="space-y-4 pt-4">

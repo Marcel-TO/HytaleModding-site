@@ -232,7 +232,7 @@ export default function HomePage() {
       <GitInfoButton />
       <Spotlight />
       
-      <div className="absolute top-4 right-4 z-10 max-w-xs">
+      {/* <div className="absolute top-4 right-4 z-10 max-w-xs">
         <p className="text-right text-xs text-muted-foreground mb-2">
           Proudly sponsored by
         </p>
@@ -245,7 +245,7 @@ export default function HomePage() {
             className="object-contain"
           />
         </div>
-      </div>
+      </div> */}
       
       <div className="container mx-auto flex flex-col items-center px-4 md:px-12 py-8 flex-1 justify-center">
         <div className="max-w-5xl space-y-8 text-center pt-16 md:pt-0">
