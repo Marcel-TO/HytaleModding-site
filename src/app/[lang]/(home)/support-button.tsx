@@ -62,7 +62,7 @@ export function SponsorButton() {
   });
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let killSwitch = false;
 
     getSponsors()
       .catch((error) => {
@@ -73,10 +73,17 @@ export function SponsorButton() {
         data = data.sort(() => Math.random() - 0.5);
         setSponsorsList(data);
         cycleSponsors(data);
-        interval = setInterval(() => cycleSponsors(data), 5 * 1000);
+        let interval = setInterval(() => {
+          if (killSwitch) {
+            return clearInterval(interval);
+          }
+          cycleSponsors(data);
+        }, 5 * 1000);
       });
 
-    return () => clearInterval(interval);
+    return () => {
+      killSwitch = true;
+    };
   }, []);
 
   return (
