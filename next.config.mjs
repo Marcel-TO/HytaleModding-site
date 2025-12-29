@@ -5,6 +5,22 @@ const withMDX = createMDX();
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "opencollective.com",
+      },
+      {
+        protocol: "https",
+        hostname: "ui-avatars.com",
+      },
+    ],
+  },
   async redirects() {
     return [
       {
@@ -44,6 +60,7 @@ const config = {
   experimental: {
     viewTransition: true,
   },
+  cacheComponents: false, // TODO: Improve caching strategy
 };
 
 export default withMDX(config);

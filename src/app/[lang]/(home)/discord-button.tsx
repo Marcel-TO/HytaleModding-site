@@ -28,7 +28,7 @@ export function DiscordButton() {
   }, []);
 
   return (
-    <Button className="relative" asChild>
+    <Button className="relative mb-4" asChild>
       <Link href="https://discord.gg/hytalemodding" target="_blank">
         <FaDiscord />
         {messages.home.discord}

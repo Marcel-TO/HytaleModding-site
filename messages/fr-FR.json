@@ -1,34 +1,36 @@
 {
   "displayName": "Français",
   "nav": {
-    "title": "Hytale Modding",
+    "title": "Modding d'Hytale",
     "documentation": "Documentation",
-    "search": "Search"
+    "search": "Recherche"
   },
   "home": {
     "title": "Ressource #1 pour le modding Hytale {flipwords}",
     "flipwords": [
       "Guides",
       "Documentation",
-      "Resources"
+      "Outils",
+      "Tutoriels"
     ],
-    "description": "The number one community resource for modding Hytale, featuring comprehensive guides, detailed documentation, and essential tools to kickstart your modding journey.",
+    "description": "La ressource communautaire numéro une, comprenant des guides complets, de la documentation détaillée et les outils essentiels pour démarrer votre aventure du modding.",
     "documentation": "Docs",
+    "forum": "Forum",
     "discord": "Rejoignez la communauté !",
-    "memberCount": "{count} Members"
+    "memberCount": "{count} Membres"
   },
   "misc": {
-    "loading": "Loading...",
-    "gitInfoUnavailable": "Git info not available"
+    "loading": "Chargement...",
+    "gitInfoUnavailable": "Informations de git indisponibles"
   },
   "meta": {
     "established_information": {
-      "title": "Established Information",
-      "separator": "Specific Categories",
+      "title": "Information vérifiée",
+      "separator": "Catégorie spécifique",
       "server": {
-        "title": "Server",
+        "title": "Serveur",
         "content_categories": {
-          "title": "Content Categories"
+          "title": "Catégories de contenu"
         },
         "interface": {
           "title": "Interface"
@@ -41,17 +43,17 @@
         "title": "Gameplay"
       },
       "misc": {
-        "title": "Miscellaneous"
+        "title": "Divers"
       }
     },
     "guides": {
       "title": "Guides",
       "java_basics": {
-        "title": "Java Basics"
+        "title": "Bases de Java"
       }
     },
     "community_projects": {
-      "title": "Community Projects"
+      "title": "Projets de la communauté"
     }
   }
 }

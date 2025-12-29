@@ -6,14 +6,16 @@
     "search": "Cerca"
   },
   "home": {
-    "title": "#1 Risorsa per il Modding in Hytale {flipwords}",
+    "title": "Risorsa #1 per il Modding in Hytale {flipwords}",
     "flipwords": [
       "Guide",
       "Documentazione",
-      "Risorse"
+      "Strumenti",
+      "Tutorial"
     ],
     "description": "La risorsa numero uno della community per il modding di Hytale, con guide complete, documentazione dettagliata e strumenti essenziali per iniziare il tuo viaggio nel mondo del modding.",
     "documentation": "Docs",
+    "forum": "Forum",
     "discord": "Unisciti alla community!",
     "memberCount": "{count} Membri"
   },

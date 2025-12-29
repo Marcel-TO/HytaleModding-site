@@ -33,9 +33,7 @@ export default async function RootLayout({
   return (
     <html lang={lang} dir={dir} suppressHydrationWarning>
       <body>
-        <RootProvider i18n={provider(lang)}>
-          {children}
-        </RootProvider>
+        <RootProvider i18n={provider(lang)}>{children}</RootProvider>
       </body>
     </html>
   );

@@ -21,23 +21,19 @@ di sfruttare le loro conoscenze esistenti per creare mod per Hytale.
 #### Preoccupazioni in Giocatore Singolo
 
 Nonostante il nome, i plugin del server possono essere utilizzati anche in modalità giocatore singolo.
-Hytale's singleplayer mode runs a local server instance, allowing players to use server plugins
-even when playing alone. This means that mods created as server plugins can enhance the singleplayer experience as well.
+La modalità giocatore singolo di Hytale esegue un'istanza server locale, consentendo ai giocatori di utilizzare i plugin del server
+anche quando si gioca da soli. Ciò significa che le mod create come plugin del server possono migliorare l'esperienza del giocatore singolo.
 
 ### Sistema Mixin
 
-Mixins were used in Minecraft modding to directly modify the game’s code, even able to overwrite
-or redirect logic and values. An extremely powerful but somewhat brittle system which depends
-on the source code/game version staying pretty much the same.
+I Mixins sono stati utilizzati nel modding di Minecraft per modificare direttamente il codice del gioco, essi sono anche in grado di sovrascrivere o reindirizzare logica e valori. Un sistema estremamente potente ma piuttosto fragile che dipende dal fatto che il codice sorgente/la versione del gioco rimangano praticamente invariati.
 
-We have no official information on Mixins in Hytale. Despite that, we have reason to believe they will not
-need to be supported for the following reasons:
+Non abbiamo informazioni ufficiali su Mixins in Hytale. Nonostante ciò, abbiamo motivo di credere che non sara' necessario supportarli per le seguenti ragioni:
 
 1. Per un gioco correttamente progettato, il 95% dei casi di utilizzo di Mixin possono essere risolti con una buona API.
-   In fact, many Minecraft modding APIs simply mixin to provide the API so the developers using
-   those APIs don’t have to write the mixin themselves.
-   * This is typically replacing hardcoded values and overwriting hardcoded behaviors.
-   * Hytale should ideally make these both API or data-driven.
-2. APIs can also be much more resilient than the game version. We can have a separate API
-   version system which means the same code will not need to be modified across multiple updates
-   until the API changes in a breaking way.
+   Infatti, molte API di modding di Minecraft si limitano ai Mixin per fornire l'API in modo che gli sviluppatori che utilizzano tali API non debbano scrivere Mixin autonomamente.
+   * Questa procedura sta tipicamente sostituendo i valori e i comportamenti hardcoded.
+   * Hytale dovrebbe idealmente rendere queste sia API che data-driven.
+2. Le API possono anche essere molto più resilienti rispetto alla versione del gioco. Possiamo avere un sistema di versione API
+   separato, il che significa che lo stesso codice non dovrà essere modificato in più aggiornamenti
+   fino a quando l'API non cambia in modo distruttivo.

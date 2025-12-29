@@ -1,11 +1,11 @@
 ---
-title: 08 - Encapsulation and Access Modifiers
-description: Learn how to protect and control access to your class data.
+title: 08 - Enkapsulasi dan Akses Modifier
+description: Pelajari cara melindungi dan mengontrol akses ke data class-mu.
 ---
 
-Encapsulation is about hiding the internal details of a class and controlling how its data is accessed and modified. This prevents bugs and makes your code more maintainable.
+Enkapsulasi adalah konsep untuk menyembunyikan detail internal dari sebuah class dan mengontrol bagaimana datanya diakses dan dimodifikasi. Ini bertujuan untuk mencegah bug dan membuat kodemu lebih mudah dipelihara.
 
-## The Problem Without Encapsulation
+## Masalah Tanpa Enkapsulasi
 
 ```java
 public class Player {
@@ -20,33 +20,33 @@ public class Main {
         player.health = 100;
         player.maxHealth = 100;
         
-        // Oops! Someone can break the rules
-        player.health = 500;      // Health over maximum!
-        player.health = -50;      // Negative health!
-        player.name = "";         // Empty name!
+        // Ups! Siapa saja bisa melanggar aturan
+        player.health = 500;      // Health melebihi batas maksimal!
+        player.health = -50;      // Health negatif!
+        player.name = "";         // Nama kosong!
     }
 }
 ```
 
-Without protection, anyone can set invalid values!
+Tanpa perlindungan, siapa saja bisa mengatur nilai yang tidak valid!
 
-## Access Modifiers
+## Akses Modifier
 
-Java has keywords that control who can access your class members:
+Java memiliki kata kunci untuk mengontrol siapa saja yang bisa mengakses member dari class-mu.
 
 | Modifier    | Class | Package | Subclass | World |
 | ----------- | ----- | ------- | -------- | ----- |
 | `public`    | ✓     | ✓       | ✓        | ✓     |
 | `protected` | ✓     | ✓       | ✓        | ✗     |
-| (none)      | ✓     | ✓       | ✗        | ✗     |
+| (tidak ada) | ✓     | ✓       | ✗        | ✗     |
 | `private`   | ✓     | ✗       | ✗        | ✗     |
 
-**For now, focus on:**
+**Untuk saat ini, fokus pada.**
 
-* `public` - Anyone can access
-* `private` - Only this class can access
+* `public` - Bisa diakses oleh siapa saja
+* `private` - Hanya bisa diakses di dalam class itu sendiri
 
-## Making Properties Private
+## Membuat Properti Private
 
 ```java
 public class Player {
@@ -62,16 +62,16 @@ public class Player {
 }
 ```
 
-Now you can't access properties directly:
+Sekarang kamu tidak bisa mengakses properti secara langsung:
 
 ```java
 Player player = new Player("Alice", 100);
-player.health = 500;  // ❌ Error! health is private
+player.health = 500;  // ❌ Error! health bersifat private
 ```
 
-## Getters and Setters
+## Getter dan Setter
 
-To access private properties, create **getter** and **setter** methods:
+Untuk mengakses properti private, buat method **getter** dan *setter*\*:
 
 ```java
 public class Player {
@@ -85,12 +85,12 @@ public class Player {
         this.maxHealth = maxHealth;
     }
     
-    // Getter - returns the value
+    // Getter - mengambil nilai
     public int getHealth() {
         return health;
     }
     
-    // Setter - sets the value with validation
+    // Setter - mengatur nilai dengan validasi
     public void setHealth(int health) {
         if (health < 0) {
             this.health = 0;
@@ -111,24 +111,24 @@ public class Player {
 }
 ```
 
-Now you can safely interact with the object:
+Sekarang interaksi dengan objek menjadi lebih aman:
 
 ```java
 Player player = new Player("Alice", 100);
 
-player.setHealth(150);  // Automatically capped at 100
+player.setHealth(150);  // Otomatis dibatasi sampai 100
 System.out.println(player.getHealth());  // 100
 
-player.setHealth(-20);  // Automatically set to 0
+player.setHealth(-20);  // Otomatis diatur ke 0
 System.out.println(player.getHealth());  // 0
 ```
 
-<Callout type="info" title="Getter and Setter Naming">
-  Follow Java naming conventions:
+<Callout type="info" title="Penamaan Getter dan Setter">
+  Ikuti konvensi penamaan Java:
 
-  * **Getter**: `get` + property name (capitalized)
-  * **Setter**: `set` + property name (capitalized)
-  * **Boolean**: `is` + property name (capitalized)
+  * **Getter**: `get` + nama properti (dengan huruf kapital di awal)
+  * **Setter**: `set` + nama properti (dengan huruf kapital di awal)
+  * **Boolean**: `is` + nama properti (dengan huruf kapital di awal)
 
   ```java
   private int health;
@@ -145,9 +145,9 @@ System.out.println(player.getHealth());  // 0
   ```
 </Callout>
 
-## Benefits of Encapsulation
+## Manfaat Enkapsulasi
 
-### 1. Validation
+### 1. Validasi
 
 ```java
 public class Item {
@@ -170,13 +170,13 @@ public class Item {
 }
 ```
 
-### 2. Read-Only Properties
+### 2. Properti Read-Only (Hanya Baca)
 
-Sometimes you don't want a setter:
+Terkadang kamu tidak ingin setter:
 
 ```java
 public class Monster {
-    private String id;  // Should never change
+    private String id;  // Tidak boleh berubah
     private int health;
     
     public Monster(String id, int health) {
@@ -184,7 +184,7 @@ public class Monster {
         this.health = health;
     }
     
-    // Getter only - no setter!
+    // Hanya getter - tidak ada setter!
     public String getId() {
         return id;
     }
@@ -199,9 +199,9 @@ public class Monster {
 }
 ```
 
-### 3. Computed Properties
+### 3. Properti yang Dihitung (Computed Properties)
 
-Getters don't have to return a field directly:
+Getter tidak harus mengembalikan field secara langsung:
 
 ```java
 public class Player {
@@ -212,21 +212,21 @@ public class Player {
         return health;
     }
     
-    // Computed property
+    // Computed yang dihitung
     public double getHealthPercentage() {
         return (health * 100.0) / maxHealth;
     }
     
-    // Computed property
+    // Computed yang dihitung
     public boolean isLowHealth() {
         return getHealthPercentage() < 25;
     }
 }
 ```
 
-## Practical Examples
+## Contoh Praktis
 
-### Item with Durability
+### Item dengan Durabilitas
 
 ```java
 public class Tool {
@@ -282,7 +282,7 @@ public class Tool {
 }
 ```
 
-### Bank Account Example
+### Contoh Akun Bank
 
 ```java
 public class PlayerWallet {
@@ -323,7 +323,7 @@ public class PlayerWallet {
 }
 ```
 
-### Protected Block System
+### Sistem Blok Terlindungi
 
 ```java
 public class ProtectedBlock {
@@ -358,7 +358,7 @@ public class ProtectedBlock {
         }
     }
     
-    // Getters only - position and owner shouldn't change
+    // Hanya getters - posisi dan pemilik tidak boleh berubah
     public int getX() {
         return x;
     }
@@ -381,36 +381,36 @@ public class ProtectedBlock {
 }
 ```
 
-## When to Use Private vs Public
+## Kapan Menggunakan Private vs Public
 
-<Callout type="info" title="General Rules">
-  **Make it private by default!** Only make things public if they need to be accessed from outside.
+<Callout type="info" title="Aturan Umum">
+  **Jadikan private secara default!** Hanya jadikan public jika memang perlu diakses dari luar.
 
   **Private:**
 
-  * Internal data (health, position, inventory)
-  * Helper methods used only within the class
-  * Anything that needs validation
+  * Data internal (health, posisi, inventory)
+  * Method pembantu yang hanya digunakan dalam class
+  * Apapun yang membutuhkan validasi
 
   **Public:**
 
-  * Methods that define the class's behavior
-  * Constructor
-  * Methods other classes need to call
+  * Method yang mendefinisikan perilaku class
+  * Konstruktor
+  * Method yang perlu dipanggil oleh class lainnya
 
   ```java
   public class Example {
-      // Private - internal data
+      // Private - data internal
       private int internalCounter;
       private String secretKey;
       
-      // Public - part of the interface
+      // Public - bagian dari interface
       public void doSomething() {
-          // Uses private helper method
+          // Menggunakan method pembantu private
           validateData();
       }
       
-      // Private - internal helper
+      // Private - method pembantu internal
       private void validateData() {
           // ...
       }
@@ -418,15 +418,15 @@ public class ProtectedBlock {
   ```
 </Callout>
 
-## The `final` Keyword
+## Kata Kunci `final`
 
-`final` means a variable can't be changed after it's set:
+`final` berarti variabel tidak bisa diubah setelah diatur:
 
 ```java
 public class Player {
-    private final String id;  // Can't change after creation
-    private String name;      // Can change
-    private int health;       // Can change
+    private final String id;  // Tidak bisa berubah setelah dibuat
+    private String name;      // Bisa berubah
+    private int health;       // Bisa berubah
     
     public Player(String id, String name) {
         this.id = id;
@@ -437,7 +437,7 @@ public class Player {
         return id;
     }
     
-    // No setId() - it's final!
+    // Tidak ada setId() - karena final!
     
     public String getName() {
         return name;
@@ -449,30 +449,147 @@ public class Player {
 }
 ```
 
-## Practice Exercises
+## Kata Kunci `static`
 
-1. **Create a `BankAccount` Class**:
-   * Private properties: accountNumber, balance
-   * Constructor to set account number
-   * Methods: deposit(), withdraw(), getBalance()
-   * Validation: can't withdraw more than balance
-   * Account number should be read-only
+### Member Static
 
-2. **Create a `Door` Class**:
-   * Private properties: isLocked, keyCode
-   * Constructor to set the key code
-   * Methods: lock(), unlock(String code), isLocked()
-   * unlock() only works with correct code
-   * Code should be private (don't expose it!)
+Sebuah class dapat mendefinisikan dua jenis member:
 
-3. **Create a `PlayerStats` Class**:
-   * Private properties: strength, defense, speed
-   * Constructor to set all stats
-   * Getters for all stats
-   * Method: getPowerLevel() that returns strength + defense + speed
-   * Stats can't be negative or over 100
+* **Member instance** — dimiliki oleh setiap objek (setiap instance memiliki salinannya sendiri).
 
-4. **Refactor a Class**: Take one of your classes from the previous lesson and add proper encapsulation:
-   * Make all properties private
-   * Add appropriate getters and setters
-   * Add validation where needed
+* **Member static** — dimiliki oleh class (satu salinan bersama untuk seluruh tipe).
+
+Sederhananya: member instance dimiliki oleh objek, sedangkan member static dimiliki oleh kelas itu sendiri dan digunakan bersama oleh semua objek dari tipe tersebut.
+
+#### Deklarasi
+
+```java
+    /* (akses modifier) */ static ... namaMember; 
+```
+
+#### Contoh
+
+```java
+class Data {
+    public int x; // Instanced member
+    public static int y = 1000; // Static member
+
+    // Member instance:
+    // bisa mengakses member static dan non-static
+    public void foo() {
+        x = 100; // OK - sama dengan this.x = 100;
+        y = 100; // OK - sama dengan Data.y = 200;
+    }
+
+    // Member static:
+    // tidak bisa mengakses variabel non-static
+    public static void bar() {
+        x = 100; // Error: variabel non-static x tidak bisa direferensikan dari konteks static
+        y = 100; // OK
+    }
+}
+```
+
+#### Mengakses member static
+
+```java
+Data data = new Data();
+data.x = 1000; // OK
+
+data.y = 1000; // OK-ish - tidak terlalu disarankan; lebih baik menggunakan Data.y
+Data.y = 1000; // OK - praktik terbaik
+
+Data.x = 1000; // Error: tidak bisa mengakses variabel instance dalam konteks static
+```
+
+### Field Static
+
+Field static merepresentasikan member data yang dimiliki oleh tipe class, bukan oleh objek. Field static juga disimpan pada lokasi memori tertentu yang digunakan bersama oleh semua instance objek yang dibuat.
+
+Dideklarasikan sebagai berikut:
+
+```java
+/* (akses modifier) (opsional) */ static /* final/volatile (opsional) */ namaField;
+```
+
+Mari ambil contoh class Data yang sama dan tambahkan konstruktor ini:
+
+```java
+public Data() {
+    y++; // ingat bahwa ini sama dengan Data.y++;
+}
+```
+
+```java
+// Setiap instance Data akan memiliki salinan private dari member instance x
+// Namun, ini akan menunjuk ke lokasi yang sama di memori untuk member y
+Data d1 = new Data(); // y = 1001
+d1.x = 5;
+Data d2 = new Data(); // y = 1002
+d2.x = 25;
+Data d3 = new Data(); // y = 1003
+// ... dan seterusnya
+```
+
+### Method Static
+
+Method static pada dasarnya merepresentasikan member fungsi dari tipe kelas tertentu
+
+Dari kelas Data, ingat kembali method instance `foo` dan method static `bar`.
+
+Method-method tersebut dapat diakses melalui:
+
+```java
+Data d1 = new Data();
+
+d1.foo(); // Method instance: Hanya dapat diakses oleh objek
+
+Data.bar(); // Method static: dapat diakses tanpa objek
+```
+
+### Inisialisasi Static
+
+Gunakan blok *static initializer* untuk menjalankan logika inisialisasi saat class pertama kali dimuat:
+
+```java
+class OtherData {
+    private static int a = 12;
+    private static int b;
+    private static String msg;
+
+    static {
+        msg = "Inisialisasi..."
+        System.out.println(msg);
+        b = 4;
+        // ... inisialisasi kompleks yang tidak bisa dilakukan dalam satu ekspresi
+    }
+}
+```
+
+## Latihan Praktik
+
+1. **Buat Class `BankAccount`**:
+   * Properti private: accountNumber, balance
+   * Konstruktor untuk mengatur nomor akun
+   * Method: deposit(), withdraw(), getBalance()
+   * Validasi: tidak bisa menarik dana melebihi saldo
+   * Nomor akun harus read-only
+
+2. **Buat Class `Door`**:
+   * Properti private: isLocked, keyCode
+   * Konstruktor untuk mengatur kode kunci
+   * Method: lock(), unlock(String code), isLocked()
+   * unlock() hanya berfungsi jika menggunakan kode yang benar
+   * Kode harus private (jangan diekspos!)
+
+3. **Buat kelas `PlayerStats`**:
+   * Properti private: strength, defense, speed
+   * Kontruktor untuk mengator semua stats
+   * Getter untuk semua stats
+   * Method: getPowerLevel() yang mengembalikan strength + defense + speed
+   * Stats tidak boleh negatif atau lebih dari 100
+
+4. **Refactor sebuah Class**: Ambil salah satu class-mu dari pelajaran sebelumnya dan tambahkan enkapsulasi yang sesuai:
+   * Jadikan semua properti private
+   * Tambahkan getter dan setter yang sesuai
+   * Tambahkan validasi jika diperlukan

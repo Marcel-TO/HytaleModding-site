@@ -7,26 +7,26 @@ Objektorientiertes Programmieren (OOP) ist die Grundlage von Java und Hytale Mod
 
 ## Was ist eine Klasse?
 
-Eine Klasse ist eine Blaupause zum Erstellen von Objekten. Stell es dir wie ein Rezept oder eine Vorlage vor.
+Eine Klasse ist ein Bauplan zum Erstellen von Objekten. Stell es dir wie ein Rezept oder eine Vorlage vor.
 
 ```java
-public class Spieler {
+public class Player {
     // Eigenschaften (Daten)
     String name;
-    int leben;
+    int health;
     int level;
     
     // Verhalten (Methoden)
-    public void schadenNehmen(int schaden) {
-        leben -= schaden;
-        System.out.println(name + " hat " + schaden + " Schaden genommen!");
+    public void takeDamage(int damage) {
+        health -= damage;
+        System.out.println(name + " hat " + damage + " Schaden genommen!");
     }
 }
 ```
 
 ## Was ist ein Objekt?
 
-Ein Objekt ist eine Instanz, die von einer Klasse erstellt wird. Wenn eine Klasse eine Blaupause ist, dann ist ein Objekt die eigentliche Sache, die aus dieser Blaupause gebaut wurde.
+Ein Objekt ist eine Instanz, die von einer Klasse erstellt wird. Wenn eine Klasse ein Bauplan ist, dann ist ein Objekt die eigentliche Sache, die aus diesem Bauplan gebaut wurde.
 
 ```java
 public class Main {
@@ -50,7 +50,7 @@ public class Main {
 ```
 
 <Callout type="info" title="Klasse vs Objekt">
-  **Klasse** = Blaupause (die Idee eines Spielers)
+  **Klasse** = Bauplan (die Idee eines Spielers)
   **Objekt** = Tatsächliche Sache (Alice, Bob, bestimmte Spieler)
 
   Eine Klasse kann viele Objekte erstellen, genau wie man mit einem Rezept mehrere Kuchen backen kann!
@@ -58,30 +58,30 @@ public class Main {
 
 ## Eine einfache Klasse erstellen
 
-Lass uns eine Schwert-Klasse für Hytale erstellen:
+Lass uns eine Sword-Klasse für Hytale erstellen:
 
 ```java
-public class Schwert {
+public class Sword {
     // Eigenschaften
     String name;
-    int schaden;
-    int haltbarkeit;
+    int damage;
+    int durability;
     
-    // Methoden um das Schwert zu nutzen
-    public void angreifen(String gegner) {
-        System.out.println("Greift " + gegner + " für " + schaden + " Schaden an!");
-        haltbarkeit -= 1;
+    // Methode um das Schwert zu benutzen
+    public void attack(String target) {
+        System.out.println(target + " angegriffen für " + damage + " Schaden!");
+        durability -= 1;
         
-        if (haltbarkeit <= 0) {
+        if (durability <= 0) {
             System.out.println(name + " ist kaputt gegangen!");
         }
     }
     
     // Methode um Informationen anzuzeigen
-    public void infoAnzeigen() {
+    public void displayInfo() {
         System.out.println("Waffe: " + name);
-        System.out.println("Schaden: " + schaden);
-        System.out.println("Haltbarkeit: " + haltbarkeit);
+        System.out.println("Schaden: " + damage);
+        System.out.println("Haltbarkeit: " + durability);
     }
 }
 ```
@@ -91,15 +91,15 @@ Die Klasse verwenden:
 ```java
 public class Main {
     public static void main(String[] args) {
-        Schwert schwert = new Schwert();
-        schwert.name = "Eisenschwert";
-        schwert.schaden = 15;
-        schwert.haltbarkeit = 3;
+        Sword sword = new Sword();
+        sword.name = "Eisenschwert";
+        sword.damage = 15;
+        sword.durability = 3;
         
-        schwert.infoAnzeigen();
-        schwert.angreifen("Zombie");
-        schwert.angreifen("Skeleton");
-        schwert.angreifen("Spider");  // Macht das Schwert kaputt
+        sword.displayInfo();
+        sword.attack("Zombie");
+        sword.attack("Skelett");
+        sword.attack("Spinne");  // Macht das Schwert kaputt
     }
 }
 ```
@@ -109,21 +109,21 @@ public class Main {
 Statt Eigenschaften einzeln zu setzen, verwende einen **Konstruktor**, um Objekte zu initialisieren:
 
 ```java
-public class Schwert {
+public class Sword {
     String name;
-    int schaden;
-    int haltbarkeit;
+    int damage;
+    int durability;
     
     // Konstruktor
-    public Schwert(String waffenName, int waffenSchaden, int waffenHaltbarkeit) {
-        name = waffenName;
-        damage = waffenSchaden;
-        durability = waffenHaltbarkeit;
+    public Sword(String weaponName, int weaponDamage, int weaponDurability) {
+        name = weaponName;
+        damage = weaponDamage;
+        durability = weaponDurability;
     }
     
-    public void angreifen(String gegner) {
-        System.out.println("Greift " + gegner + " für " + schaden + " Schaden an!");
-        haltbarkeit--;
+    public void attack(String target) {
+        System.out.println(target + " angegriffen für " + damage + " Schaden!");
+        durability--;
     }
 }
 ```
@@ -134,18 +134,18 @@ Jetzt ist es einfacher, Schwerter zu erstellen:
 public class Main {
     public static void main(String[] args) {
         // Viel ordentlicher!
-        Schwert eisenSchwert = new Schwert("Eisenschwert", 15, 100);
-        Schwert diamantSchwert = new Sword("Diamantschwert", 25, 200);
+        Sword ironSword = new Sword("Eisenschwert", 15, 100);
+        Sword diamondSword = new Sword("Diamantschwert", 25, 200);
         
-        eisenSchwert.angreifen("Zombie");
-        diamantSchwert.angreifen("Boss");
+        ironSword.attack("Zombie");
+        diamondSword.attack("Boss");
     }
 }
 ```
 
 <Callout type="info" title="Konstruktor-Regeln">
   * Selber Name wie die Klasse
-  * Kein return type (nicht einmal `void`)
+  * Kein Rückgabetyp (nicht einmal `void`)
   * Wird automatisch aufgerufen, wenn du `new` verwendest
   * Kann mehrere Konstruktoren haben (Overloading)
 
@@ -169,18 +169,18 @@ public class Main {
   ```
 </Callout>
 
-## Das `this` Keyword
+## Das Schlüsselwort `this`
 
 `this` bezieht sich auf das aktuelle Objekt. Verwende es zum klarzustellen, wenn Parametername und Eigenschaftsname übereinstimmen:
 
 ```java
 public class Player {
     String name;
-    int leben;
+    int health;
     
-    public Player(String name, int leben) {
+    public Player(String name, int health) {
         this.name = name;      // this.name = Eigenschaft
-        this.leben = leben;  // name = Parameter
+        this.health = health;  // name = Parameter
     }
 }
 ```
@@ -188,9 +188,9 @@ public class Player {
 Ohne `this` kommt Java durcheinander:
 
 ```java
-public Player(String name, int leben) {
+public Player(String name, int health) {
     name = name;      // ❌ Welches name? Mehrdeutig!
-    leben = leben;    // ❌ Welches leben? Mehrdeutig!
+    health = health;  // ❌ Welches health? Mehrdeutig!
 }
 ```
 
@@ -230,9 +230,9 @@ public class Item {
 ```java
 public class Main {
     public static void main(String[] args) {
-        Item trank = new Item("Heiltrank", "Konsumierbares", 5, 0.5);
+        Item potion = new Item("Heiltrank", "Konsumierbares", 5, 0.5);
         
-        trank.use();  // Heiltrank verwendet. Noch übrig: 4
+        potion.use();  // Heiltrank verwendet. Noch übrig: 4
         System.out.println("Gesamtgewicht: " + potion.getTotalWeight()); // 2.0
     }
 }
@@ -283,9 +283,9 @@ public class Monster {
 public class Main {
     public static void main(String[] args) {
         Monster zombie = new Monster("Zombie", 50, 10, true);
-        Monster chicken = new Monster("Chicken", 10, 0, false);
+        Monster chicken = new Monster("Huhn", 10, 0, false);
         
-        zombie.takeDamage(20);        // Zombie hat 20 Schaden genommen!
+        zombie.takeDamage(20);               // Zombie hat 20 Schaden genommen!
         int damage = zombie.attackPlayer();  // Zombie greift für 20 Schaden an!
         
         if (zombie.isAlive()) {
@@ -328,15 +328,15 @@ public class Block {
 }
 ```
 
-## Access Modifiers (Vorschau)
+## Zugriffsmodifikatoren (Vorschau)
 
-Du kennst schon `public` - es bedeutet "jeder kann darauf zugreifen". Du wirst später mehr über Access Modifiers (Zugriffskontrolle) erfahren, aber hier ist eine Vorschau:
+Du kennst schon `public` - es bedeutet "jeder kann darauf zugreifen". Du wirst später mehr über Zugriffsmodifikatoren (Zugriffskontrolle) erfahren, aber hier ist eine Vorschau:
 
 ```java
 public class Beispiel {
     public String publicVar;      // Jeder kann drauf zugreifen
-    private String privateVar;    //Nur diese Klasse kann zugreifen
-    // (no modifier) String defaultVar; // Package-Zugriff
+    private String privateVar;    // Nur diese Klasse kann zugreifen
+    /* (kein Modifikator) */ String defaultVar; // Package-Zugriff
 }
 ```
 
@@ -355,24 +355,24 @@ Verwende im Moment `public` für alles. Du wirst in der nächsten Lektion lernen
 
 ## Übungsaufgaben
 
-1. **Erstelle eine `Trank` Klasse**:
-   * Eigenschaften: name, heilungsMenge, benutzungen
+1. **Erstelle eine `Potion` Klasse**:
+   * Eigenschaften: `name`, `healAmount`, `uses`
    * Konstruktor um alle Eigenschaften zu setzen
-   * Methode `trinken()` die heilt und benutzungen reduziert
-   * Methode `istLeer()` die true zurückgibt, wenn benutzungen weniger als oder gleich 0 ist
+   * Methode `drink()` die heilt und `uses` reduziert
+   * Methode `isEmpty()` die true zurückgibt, wenn `uses` weniger als oder gleich 0 ist
 
-2. **Erstelle eine `Kiste` Klasse**:
-   * Eigenschaften: istGesperrt, itemAnzahl, kapazität
+2. **Erstelle eine `Chest` Klasse**:
+   * Eigenschaften: `isLocked`, `itemCount`, `capacity`
    * Konstruktor
-   * Methode `itemHinzufügen()` die kapazität überprüft
-   * Methode `entsperren()` die istGesperrt auf false setzt
-   * Methode `istVoll()` die überprüft, ob itemAnzahl mehr oder gleich kapazität ist
+   * Methode `addItem()`, die `capacity` überprüft
+   * Methode `unlock()`, die `isLocked` auf false setzt
+   * Methode `isFull()`, die überprüft ob `itemCount` >= `capacity`
 
 3. **Erstelle eine `Villager` Klasse**:
-   * Eigenschaften: name, beruf, anzahlGehandelt
+   * Eigenschaften: `name`, `profession`, `tradeCount`
    * Konstruktor
-   * Methode `begrüßen()` die einen Gruß ausgibt
-   * Methode `handeln()` die anzahlGehandelt erhöht
-   * Methode `infoAusgeben()` die alle Eigenschaften anzeigt
+   * Methode `greet()`, die einen Gruß ausgibt
+   * Methode `trade()`, die `tradeCount` erhöht
+   * Methode `getInfo()`, die alle Eigenschaften anzeigt
 
 4. **Erstelle mehrere Objekte**: Erstelle mithilfe einer beliebigen Klasse, die du erstellt hast, 3 verschiedene Objekte und teste alle ihre Methoden.

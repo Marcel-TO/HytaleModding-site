@@ -3,17 +3,19 @@
   "nav": {
     "title": "Hytale Modding",
     "documentation": "Dökümantasyon",
-    "search": "Search"
+    "search": ""
   },
   "home": {
     "title": "Hytale Modlama {flipwords} için #1 kaynak",
     "flipwords": [
       "kılavuzları",
       "Dökümantasyonları",
-      "Kaynakları"
+      "Kaynakları",
+      "Tutorials"
     ],
     "description": "The number one community resource for modding Hytale, featuring comprehensive guides, detailed documentation, and essential tools to kickstart your modding journey.",
     "documentation": "Dökümantasyon",
+    "forum": "Forum",
     "discord": "Discord",
     "memberCount": "{count} üye"
   },

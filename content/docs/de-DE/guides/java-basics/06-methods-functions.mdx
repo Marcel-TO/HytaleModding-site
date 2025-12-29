@@ -7,7 +7,7 @@ Methoden sind wiederverwendbare Codeblöcke, die bestimmte Aufgaben ausführen. 
 
 ## Was ist eine Methode?
 
-Stell dir eine Methode wie ein Rezept vor. Du definierst es einmal und nutzt es wann immer du es brauchst.
+Stell dir eine Methode wie ein Rezept vor. Du definierst es einmal und nutzt es, wann immer du es brauchst.
 
 ```java tab="Code"
 public class Game {
@@ -16,7 +16,7 @@ public class Game {
         greet();        // Nochmal!
     }
     
-    // Methoden definition
+    // Definition der Methode
     public static void greet() {
         System.out.println("Willkommen bei Hytale!");
     }
@@ -31,6 +31,13 @@ Willkommen bei Hytale!
 ## Methodenstruktur
 
 ```java
+public static void methodName() {
+//  ^      ^     ^      ^     ^
+//  |      |     |      |     |
+// access static return name parameter
+// modifier       type
+    // Code hier
+}
 ```
 
 Du wirst später noch lernen, was `public` und `static` bedeuten. Verwende sie im Moment einfach nur.
@@ -130,18 +137,18 @@ public static double calculateDamage(int attack, double multiplier) {
 
 ## Praktische Beispiele
 
-### Gesundheitssystem
+### Lebenssystem
 
 ```java tab="Code"
-public static void lebenAnzeigen(String name, int leben, int maxLeben) {
-    double prozent = (leben * 100.0) / maxLeben;
-    System.out.println(name + ": " + leben + "/" + maxLeben + 
-                      " (" + prozent + "%)");
+public static void displayHealth(String name, int health, int maxHealth) {
+    double percentage = (health * 100.0) / maxHealth;
+    System.out.println(name + ": " + health + "/" + maxHealth + 
+                      " (" + percentage + "%)");
 }
 
 public static void main(String[] args) {
-    lebenAnzeigen("Spieler", 75, 100);
-    lebenAnzeigen("Boss", 450, 500);
+    displayHealth("Spieler", 75, 100);
+    displayHealth("Boss", 450, 500);
 }
 ```
 
@@ -150,29 +157,29 @@ Spieler: 75/100 (75.0 %)
 Boss: 450/500 (90.0 %)
 ```
 
-### Schadensrechner
+### Schadensberechnung
 
 ```java tab="Code"
-public static int schadenBerechnen(int basisSchaden, int waffenSchaden, boolean istCritical) {
-    int gesamtSchaden = basisSchaden + waffenSchaden;
+public static int calculateDamage(int baseAttack, int weaponDamage, boolean isCritical) {
+    int totalDamage = baseAttack + weaponDamage;
     
-    if (istCritical) {
-        gesamtSchaden *= 2;
+    if (isCritical) {
+        totalDamage *= 2;
     }
     
-    return gesamtSchaden;
+    return totalDamage;
 }
 
 public static void main(String[] args) {
-    int schaden1 = schadenBerechnen(10, 15, false);  // 25
-    int schaden2 = schadenBerechnen(10, 15, true);   // 50
+    int damage1 = calculateDamage(10, 15, false);  // 25
+    int damage2 = calculateDamage(10, 15, true);   // 50
     
-    System.out.println("Normaler hit: " + schaden1);
-    System.out.println("Critical hit: " + schaden2);
+    System.out.println("Normal hit: " + damage1);
+    System.out.println("Critical hit: " + damage2);
 }
 ```
 
-### Benötigte Erfahrungsstufe
+### Benötigte EXP-Level
 
 ```java tab="Code"
 public static int getXPForLevel(int level) {
@@ -197,7 +204,7 @@ public static void main(String[] args) {
 }
 ```
 
-### Entfernungsmesser
+### Entfernungsberechnung
 
 ```java tab="Code"
 public static double calculateDistance(int x1, int y1, int x2, int y2) {
@@ -224,24 +231,24 @@ public static void main(String[] args) {
 Du kannst mehrere Methoden mit dem selben Namen, aber unterschiedlichen Parametern haben:
 
 ```java
-public static void nachrichtAnzeigen(String nachricht) {
-    System.out.println(nachricht);
+public static void displayMessage(String message) {
+    System.out.println(message);
 }
 
-public static void nachrichtAnzeigen(String nachricht, int wiederholungen) {
-    for (int i = 0; i < wiederholungen; i++) {
-        System.out.println(nachricht);
+public static void displayMessage(String message, int times) {
+    for (int i = 0; i < times; i++) {
+        System.out.println(message);
     }
 }
 
 public static void main(String[] args) {
-    nachrichtAnzeigen("Hallo");           // Erste Version
-    nachrichtAnzeigen("Hallo", 3);        // Zweite Version
+    displayMessage("Hello");           // Ruft die erste Version auf
+    displayMessage("Hello", 3);        // Ruft die zweite Version auf
 }
 ```
 
-<Callout type="info" title="Methodenüberladungsregeln">
-  Methoden werden als anders angesehen, wenn sie eines der folgende haben:
+<Callout type="info" title="Regeln der Methodenüberladung">
+  Methoden werden als anders angesehen, wenn sie eines des Folgenden haben:
 
   * Unterschiedliche Anzahl von Parametern
   * Verschiedene Arten von Parametern
@@ -272,24 +279,24 @@ public static Item createItem(String name, int durability) {
 }
 
 public static Item createSword() {
-    return createItem("Sword", 100);
+    return createItem("Schwert", 100);
 }
 
 public static Item createPickaxe() {
-    return createItem("Pickaxe", 150);
+    return createItem("Spitzhacke", 150);
 }
 ```
 
-### Blockplatzierungsvalidierung
+### Überprüfen der Blockplatzierung
 
 ```java
 public static boolean canPlaceBlock(int x, int y, int z) {
-    // Check if position is valid
+    // Überprüfe ob die Position valide ist
     if (y < 0 || y > 255) {
         return false;
     }
     
-    // Check if block already exists
+    // Überprüfe ob der Block bereits existiert
     if (isBlockAt(x, y, z)) {
         return false;
     }
@@ -307,7 +314,7 @@ public static void placeBlock(int x, int y, int z, String type) {
 }
 ```
 
-### Spielerzustandsüberprüfung
+### Überprüfung des Spielerzustands
 
 ```java
 public static boolean isLowHealth(int health, int maxHealth) {
@@ -324,7 +331,7 @@ public static String getHealthStatus(int health, int maxHealth) {
     } else if (percentage >= 25) {
         return "Kritisch";
     } else {
-        return "Fast tod";
+        return "Fast tot";
     }
 }
 ```
@@ -354,17 +361,17 @@ public static String getHealthStatus(int health, int maxHealth) {
    * Celsius in Fahrenheit: `(C × 9/5) + 32`
    * Fahrenheit in Celsius: `(F - 32) × 5/9`
 
-2. **Kreisrechner**: Erstelle Methoden zum Kalkulieren von:
+2. **Kreisrechner**: Erstelle Methoden zum Berechnen von:
    * Fläche: `π × radius²`
    * Umfang: `2 × π × radius`
    * Nutze `Math.PI` für π
 
 3. **Item Haltbarkeit**: Schreibe diese Methoden:
-   * `damageItem(int current, int damage)` - Gibt neue Haltbarkeit zurück
+   * `damageItem(int current, int damage)` - gibt neue Haltbarkeit zurück
    * `isBroken(int durability)` - gibt true zurück, wenn die Haltbarkeit kleiner oder gleich 0 ist
    * `repairItem(int current, int max)` - gibt die maximale Haltbarkeit zurück
 
-4. **Passwort-Validator**: Erstelle eine Methode, die überprüft, ob ein Passwort gültig ist:
+4. **Passwort-Validierung**: Erstelle eine Methode, die überprüft, ob ein Passwort gültig ist:
    * Mindestens 8 Zeichen lang
    * Enthält mindestens eine Zahl
    * Gibt true zurück wenn gültig, ansonsten false
@@ -376,7 +383,7 @@ public static String getHealthStatus(int health, int maxHealth) {
 public static int getValue() {
     int x = 10;
     // return vergessen!
-} !
+}
 
 // Richtig
 public static int getValue() {
@@ -384,9 +391,9 @@ public static int getValue() {
     return x;
 }
 
-// Falsch - Falscher return type
+// Falsch - Falscher Rückgabetyp
 public static int getText() {
-    return "Hallo";  // Fehler! Sollte int returnen, nicht String
+    return "Hallo";  // Fehler! Sollte int zurückgeben, nicht String
 }
 
 // Richtig

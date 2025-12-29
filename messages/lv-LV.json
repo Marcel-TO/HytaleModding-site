@@ -1,19 +1,21 @@
 {
   "displayName": "Latviski",
   "nav": {
-    "title": "Hytale Modificēšana",
+    "title": "Hytale Modding",
     "documentation": "Dokumentācija",
-    "search": "Search"
+    "search": "Meklēt"
   },
   "home": {
-    "title": "#1 Resurss Hytale Modificēšanā {flipwords}",
+    "title": "#1 Resurss Hytale Modificēšanas {flipwords}",
     "flipwords": [
-      "Rokasgrāmatas",
-      "Dokumentācija",
-      "Resursi"
+      "Rokasgrāmatām",
+      "Dokumentācijai",
+      "Rīkiem",
+      "Pamācībām"
     ],
     "description": "Numur viens kopienas resurss Hytale modificēšanai, kurā atradīsi visaptverošas rokasgrāmatas, detalizētu dokumentāciju un būtiskus rīkus, lai sāktu savu modificēšanas ceļojumu.",
     "documentation": "Doki",
+    "forum": "Forums",
     "discord": "Pievienojies kopienai!",
     "memberCount": "{count} Biedri"
   },
@@ -23,35 +25,35 @@
   },
   "meta": {
     "established_information": {
-      "title": "Established Information",
-      "separator": "Specific Categories",
+      "title": "Zināmā Informācija",
+      "separator": "Specifiskas Kategorijas",
       "server": {
-        "title": "Server",
+        "title": "Serveris",
         "content_categories": {
-          "title": "Content Categories"
+          "title": "Satura Kategorijas"
         },
         "interface": {
-          "title": "Interface"
+          "title": "Interfeiss"
         }
       },
       "client": {
-        "title": "Client"
+        "title": "Klients"
       },
       "gameplay": {
-        "title": "Gameplay"
+        "title": "Spēle"
       },
       "misc": {
-        "title": "Miscellaneous"
+        "title": "Dažādi"
       }
     },
     "guides": {
-      "title": "Guides",
+      "title": "Rokasgrāmatas",
       "java_basics": {
-        "title": "Java Basics"
+        "title": "Java Pamati"
       }
     },
     "community_projects": {
-      "title": "Community Projects"
+      "title": "Kopienas Projekti"
     }
   }
 }

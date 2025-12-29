@@ -13,6 +13,7 @@ import { createRelativeLink } from "fumadocs-ui/mdx";
 import { branch } from "@/git-info.json";
 import { ViewTransition } from "react";
 import { getGithubLastEdit } from 'fumadocs-core/content/github';
+import Link from "next/link";
 
 export default async function Page(
   props: PageProps<"/[lang]/docs/[[...slug]]">,
@@ -21,19 +22,22 @@ export default async function Page(
   const page = source.getPage(params.slug, params.lang);
   if (!page) notFound();
 
+  const messages = require(`@/../messages/${params.lang}.json`);
+
   const MDX = page.data.body;
   const lastModified = await getGithubLastEdit({
     owner: "HytaleModding",
     repo: "site",
     path: `content/docs/${page.path}`
   })
+  const authors = page.data.authors;
 
   return (
-    <ViewTransition enter="docs-transition" exit="docs-transition">
+    <ViewTransition enter="blur-scale-transition" exit="blur-scale-transition">
       <DocsPage
         toc={page.data.toc}
         tableOfContent={{
-          style: 'clerk'
+          style: "clerk",
         }}
         full={page.data.full}
         editOnGithub={{
@@ -53,9 +57,32 @@ export default async function Page(
             })}
           />
         </DocsBody>
-        {lastModified && (
-          <PageLastUpdate date={lastModified} />
+
+        {/* Authors section */}
+        {authors && authors.length > 0 && (
+          <div className="text-muted-foreground mt-8 text-sm">
+            {messages.misc.credit}{" "}
+            {authors.map((author, index) => (
+              <span key={index}>
+                {author.url ? (
+                  <Link
+                    href={author.url}
+                    className="text-foreground hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {author.name}
+                  </Link>
+                ) : (
+                  <span className="text-foreground">{author.name}</span>
+                )}
+                {index < authors.length - 1 && ", "}
+              </span>
+            ))}
+          </div>
         )}
+
+        {lastModified && <PageLastUpdate date={lastModified} />}
       </DocsPage>
     </ViewTransition>
   );

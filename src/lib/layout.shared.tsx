@@ -13,18 +13,25 @@ export function baseOptions(
     i18n,
     nav: {
       title: messages.nav.title,
+      url: `/${locale}/`,
     },
   };
 
+  options.links = [];
+
   if (!docsLayout) {
-    options.links = [
+    options.links?.push(
       {
         icon: <BookIcon />,
         text: messages.nav.documentation,
         url: `/${locale}/docs`,
         active: "nested-url",
       },
-    ];
+      {
+        text: messages.nav.sponsors,
+        url: `/${locale}/sponsors`,
+      },
+    );
   }
 
   return options;

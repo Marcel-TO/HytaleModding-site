@@ -1,74 +1,75 @@
 ---
-title: Developer Q&A Technical Insights
-description: Comprehensive summary of technical insights from Hytale developers covering architecture, modding, gameplay systems, and development philosophy.
+title: Questions-Réponses des développeurs et informations techniques
+description: Résumé complet des informations techniques données par les développeurs d'Hytale, couvrant l'architecture, le modding, les systèmes de gameplay, et la philosophie de développement.
 ---
 
-# Developer Q&A Technical Insights
+# Questions-Réponses des développeurs et informations techniques
 
-This extensive Q&A session with Hytale developers reveals critical technical details about the game's architecture, modding philosophy, gameplay systems, and development approach.
+Cette session étendue de Questions-Réponses avec les développeurs d'Hytale révèle des détails techniques critiques sur l'architecture du jeu, la philosophie de modding, les systèmes de gameplay, et l'approche de développement.
 
-## Technical Architecture
+## Architecture technique
 
-### Network & Infrastructure
+### Réseau et infrastructure
 
-* **Protocol**: Uses QUIC (reliable UDP with unreliable channels) instead of TCP
-* **Server Compatibility**: Runs on any platform supporting Java 25
-* **Connection Method**: Direct IP initially, server discovery planned post-launch
-* **Data Layer**: Current custom serialization format will be replaced post-launch
-* **Performance**: Multi-core support - each world has main thread + parallel execution
-* **Rendering**: OpenGL 3.3 for Mac compatibility, potential future Vulkan/Metal migration
+* **Protocole** : QUIC (un UDP fiable avec des canaux peu fiables) au lieu de TCP
+* **Compatibilité des serveurs** : fonctionne sur toute plateforme supportant Java 25
+* **Méthode de connexion** : entrer l'adresse IP du serveur au début, page de découverte de serveurs prévue après la sortie
+* **Couche de données** : le format de sérialisation personnalisé actuel sera remplacé après la sortie
+* **Performances** : prise en charge multicœur - chaque monde à un thread principal + des exécutions parallèles
+* **Rendu** : OpenGL 3.3 pour la compatibilité avec Mac, future migration potentielle sur Vulkan/Metal
+* **Modèle de Tick** : la fréquence de ticks de base du serveur est de 30 TPS (ticks par secondes) ; peut être modifié en utilisant des plugins serveur
 
-### Security & Distribution
+### Sécurité et distribution
 
-* **No Client-Side Code Execution**: Prevents remote code execution exploits
-* **Downloads Limited To**: Configuration files and assets only
-* **Mod Distribution**: Community platforms (CurseForge, Modrinth), no immediate in-game marketplace
-* **Server Hosting**: Available day 1, no business agreements required (just EULA/TOS)
+* **Pas d'exécution de code côté-client** : empêche les failles d'exécution de code à distance
+* **Téléchargements limités à** : fichiers de configuration et assets uniquement
+* **Distribution des mods** : plateformes communautaires (CurseForge, Modrinth), pas de marché immédiat en jeu
+* **Hébergement de serveurs** : disponible dès le jour 1, pas d'accord commercial requis (seulement EULA/TOS)
 
-## Modding Capabilities
+## Capacités de modding
 
-### Server-Side Power
+### La puissance du côté-serveur
 
-* **Full Java Access**: Database connections, web requests, any Java functionality
-* **Custom Libraries**: Can create Lua scripting, ML frameworks, or any Java library
-* **Server Modification**: Shared source code allows heavy server modifications
-* **Hot Reload**: Supported for most asset types
-* **Documentation**: Public GitBook planned, though initially sparse
+* **Accès Java complet** : connexions aux bases de données, requêtes web, toutes les fonctionnalités de Java
+* **Librairies personnalisées** : possibilité de créer des scripts Lua, des frameworks ML ou n'importe quelle bibliothèque Java
+* **Modification du serveur** : le code source partagé permet des modifications lourdes du serveur
+* **Hot Reload** : supporté pour la plupart des types d'assets
+* **Documentation** : GitBook public planifié, bien qu'initialement éparpillé
 
-### Content Creation (No Code Required)
+### Création de contenu (Aucun code requis)
 
-* **World Generation**: Custom biomes and maps without Java
-* **NPCs & Items**: JSON-based configuration
-* **Crafting Recipes**: Data-driven system
-* **Visual Scripting**: Replaces command blocks, fully sandboxed
-* **Prefab System**: Sophisticated building blocks with in-game editor
+* **Génération du monde** : Biomes et cartes personnalisés sans besoin de Java
+* **PNJs et objets** : configurations basées sur JSON
+* **Recettes** : système basé sur les données
+* **Visual Scripting** : Remplace les blocs de commandes, entièrement en bac à sable
+* **Système de préfabriqués** : blocs de construction sophistiqués avec un éditeur en jeu
 
-### Advanced Modding
+### Modding avancé
 
-* **Combat System**: Data-driven interaction system for attack chains and abilities
-* **Sub-Hitboxes**: Support for complex boss mechanics (needs improvement)
-* **Status Effects**: Buff/debuff system with custom effects and stats
-* **Custom UI**: NoesisGUI transition enables powerful interface customization
-* **Block Physics**: Selective system (trees fall, but placed blocks don't)
+* **Système de combat** : système d'interaction basé sur les données pour les combos d'attaque et les capacités
+* **Sous-boîtes de collision** : support des mécaniques complexes des boss (nécessite une amélioration)
+* **Effets de statut** : système de buff/debuff avec des effets et des statistiques personnalisés
+* **Interface utilisateur personnalisée** : la transition vers NoesisGUI permet une personnalisation puissante de l'interface
+* **Physique des blocs** : système sélectif (les arbres tombent, mais pas les blocs placés)
 
-## Gameplay Systems
+## Systèmes de gameplay
 
-### Core Mechanics
+### Mécaniques principales
 
-* **Stamina System**: No hunger by default (can be modded in)
-* **Gravity**: Selective block physics - trees collapse, buildings can float
-* **Lighting**: Major overhaul to fix model/voxel inconsistencies
-* **World Height**: Currently limited, may change with voxel storage updates
-* **Automation**: No redstone equivalent at launch (moddable)
+* **Système d'endurance** : pas de système de faim par défaut (peut être moddé)
+* **Gravité** : physique des blocs sélective - les arbres s'effondrent, mais les bâtiments peuvent flotter
+* **Éclairage** : refonte majeure pour corriger les incohérences des modèles/voxels
+* **Hauteur du monde** : actuellement limitée, pourrait changer avec des mises à jour du stockage des voxels
+* **Automatisation** : pas d'équivalent à la redstone au lancement (mais pourrait être moddé)
 
-### Player Systems
+### Systèmes liés au joueur
 
-* **Character Models**: Humans by default, changeable in creative mode
-* **Multiplayer Avatars**: Server-controlled (no custom models in multiplayer)
-* **Skins**: Full customization possible ("mod yourself into a potato")
-* **Shapeshifting**: Transformation potions exist for fun/modding
+* **Modèles de personnages** : humains par défaut, peut être modifié en mode créatif
+* **Avatars multijoueurs** : contrôlés par le serveur (pas de modèles personnalisés en multijoueur)
+* **Skins** : personnalisation complète possible ("Moddez vous en une pomme de terre")
+* **Changement de forme** : les potions de transformation existent pour le fun/modding
 
-### World & NPCs
+### Monde et PNJs
 
 * **Faction System**: Living world with dynamic NPC interactions
 * **Village Systems**: Planned dynamic villages with relationships and behaviors

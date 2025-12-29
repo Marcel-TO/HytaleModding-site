@@ -8,12 +8,14 @@
   "home": {
     "title": "#1 Ressource für Hytale Modding {flipwords}",
     "flipwords": [
-      "Leitfäden",
+      "Anleitungen",
       "Dokumentation",
-      "Ressourcen"
+      "Werkzeuge",
+      "Leitfäden"
     ],
-    "description": "Die beste Community-Ressource für Hytale Modding mit\numfassenden Anleitungen, detaillierter Dokumentation und wichtigen Tools, um\ndeine Modding-Reise zu starten.",
+    "description": "Das beste Community-Angebot für Hytale Modding mit\numfassenden Anleitungen, detaillierter Dokumentation und wichtigen Tools, um deine Modding-Reise zu starten.",
     "documentation": "Dokumentation",
+    "forum": "Forum",
     "discord": "Werde Teil unserer Community!",
     "memberCount": "{count} Mitglieder"
   },
@@ -23,12 +25,12 @@
   },
   "meta": {
     "established_information": {
-      "title": "Established Information",
+      "title": "Bekanntes Wissen",
       "separator": "Spezifische Kategorien",
       "server": {
         "title": "Server",
         "content_categories": {
-          "title": "Content Categories"
+          "title": "Kategorien"
         },
         "interface": {
           "title": "Benutzeroberfläche"
@@ -38,20 +40,20 @@
         "title": "Client"
       },
       "gameplay": {
-        "title": "Gameplay"
+        "title": "Spielmechanik"
       },
       "misc": {
         "title": "Sonstiges"
       }
     },
     "guides": {
-      "title": "Leitfäden",
+      "title": "Anleitungen",
       "java_basics": {
-        "title": "Java Basics"
+        "title": "Java Grundlagen"
       }
     },
     "community_projects": {
-      "title": "Community Projects"
+      "title": "Community-Projekte"
     }
   }
 }

@@ -2,36 +2,38 @@
   "displayName": "Nederlands",
   "nav": {
     "title": "Hytale Modding",
-    "documentation": "Documentation",
-    "search": "Search"
+    "documentation": "Documentatie",
+    "search": "Zoeken"
   },
   "home": {
     "title": "Hytale Modding",
     "flipwords": [
-      "Guides",
-      "Documentation",
-      "Resources"
+      "Handleidingen",
+      "Documentatie",
+      "Resources",
+      "Tutorials"
     ],
     "description": "De nummer een bron voor het modden van Hytale gemaakt door de community, met uitgebreide handleiding, gedetailleerde documentatie, en essentiële hulpmiddelen om te beginnen met jouw modding avontuur.",
-    "documentation": "Documentation",
-    "discord": "Discord",
-    "memberCount": "{count} Members"
+    "documentation": "Documentatie",
+    "forum": "Forum",
+    "discord": "Word lid van de community!",
+    "memberCount": "{count} Leden"
   },
   "misc": {
-    "loading": "Loading...",
-    "gitInfoUnavailable": "Git info not available"
+    "loading": "Aan het laden...",
+    "gitInfoUnavailable": "Git informatie niet beschikbaar"
   },
   "meta": {
     "established_information": {
-      "title": "Established Information",
-      "separator": "Specific Categories",
+      "title": "Vastgestelde informatie",
+      "separator": "Specifieke categorieën",
       "server": {
         "title": "Server",
         "content_categories": {
           "title": "Content Categories"
         },
         "interface": {
-          "title": "Interface"
+          "title": "Uiterlijk"
         }
       },
       "client": {
@@ -41,17 +43,17 @@
         "title": "Gameplay"
       },
       "misc": {
-        "title": "Miscellaneous"
+        "title": "Overige"
       }
     },
     "guides": {
-      "title": "Guides",
+      "title": "Handleidingen",
       "java_basics": {
         "title": "Java Basics"
       }
     },
     "community_projects": {
-      "title": "Community Projects"
+      "title": "Community projecten"
     }
   }
 }
