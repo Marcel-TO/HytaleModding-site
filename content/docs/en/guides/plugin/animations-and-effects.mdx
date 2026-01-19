@@ -1,0 +1,178 @@
+---
+title: "Animations and Effects"
+description: "Learn how you can add animations and effects to your custom items"
+authors:
+    - name: "Marcel-TO"
+      url: "https://marcel-to.net"
+---
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+
+Adding animations and effects to your custom items can greatly enhance the user experience. This guide will walk you through the process of adding simple animations and effects to your custom items. If you haven't created a custom item yet, please refer to the [Custom Item and Interaction](./item-interaction.mdx) guide first.
+
+## Prerequisites
+
+1. A basic understanding of creating custom items.
+2. An asset pack set up in your plugin or in the Asset Editor
+
+## Setup
+The following structure represents as example for a custom item in this guide:
+<Files>
+    <Folder name="resources" defaultOpen>
+        <Folder name="Server" defaultOpen>
+            <Folder name="Item" defaultOpen>
+                <Folder name="Items" defaultOpen>
+                    <File name="my_new_item.json" />
+                </Folder>
+            </Folder>
+        </Folder>
+        <Folder name="Common" defaultOpen>
+            <Folder name="Resources" defaultOpen>
+                <Folder name="Items" defaultOpen>
+                    <Folder name="my_new_item" defaultOpen>
+                        <Folder name="Animations" defaultOpen>
+                            <File name="my_new_item_animation.blockyanim" />
+                        </Folder>
+                        <File name="model.blockymodel" />
+                        <File name="model_texture.png" />
+                    </Folder>
+                </Folder>
+            </Folder>
+            <Folder name="Icons" defaultOpen>
+                <Folder name="ItemsGenerated" defaultOpen>
+                    <File name="my_new_item_icon.png" />
+                </Folder>
+            </Folder>
+        </Folder>
+    </Folder>
+</Files>
+
+## Create Animations
+1. Open your custom item's blocky model in [Blockbench](https://blockbench.net/) and go to animations.
+2. Create a new animation (e.g., "my_new_item_animation") and design your desired animation using Blockbench's animation tools.
+3. Export the animation as a `.blockyanim` file and save it in the `Resources/Items/my_new_item/Animations/` directory.
+
+<Callout type="info">
+Tip!
+
+Due to Hytales ECS architecture, you can reuse animations across multiple models, as long as they use the same node structure. This means you can create a library of animations and apply them to different items or blocks that share similar structures, saving time and effort in your asset creation process.
+</Callout>
+
+## Add default Animation
+For this example, we will use a simple spinning animation. This code example is what blockbench would generate for such an animation.
+
+
+```json
+{
+  "formatVersion": 1,
+  "duration": 480,
+  "holdLastKeyframe": false,
+  "nodeAnimations": {
+    "Body": {
+      "position": [],
+      "orientation": [
+        {
+          "time": 0,
+          "delta": {"x": 0, "y": 0, "z": 0, "w": 1},
+          "interpolationType": "linear"
+        },
+        {
+          "time": 120,
+          "delta": {"x": 0, "y": 0, "z": 0.70711, "w": 0.70711},
+          "interpolationType": "linear"
+        },
+        {
+          "time": 240,
+          "delta": {"x": 0, "y": 0, "z": 1, "w": 0},
+          "interpolationType": "linear"
+        },
+        {
+          "time": 360,
+          "delta": {"x": 0, "y": 0, "z": 0.70711, "w": -0.70711},
+          "interpolationType": "linear"
+        },
+        {
+          "time": 480,
+          "delta": {"x": 0, "y": 0, "z": 0, "w": 1},
+          "interpolationType": "linear"
+        }
+      ],
+      "shapeStretch": [],
+      "shapeVisible": [],
+      "shapeUvOffset": []
+    }
+  }
+}
+```
+
+To link the animation to your custom item, you need to modify the item's JSON definition file located at `Server/Item/Items/my_new_item.json`.
+
+```json
+{
+  ... // existing item properties from above
+  "Animation": "Resources/Items/my_new_item/Animations/my_new_item/my_new_item_animation.blockyanim",
+  "UsePlayerAnimations": false, // Set to true if you want to use player animations
+  "PlayerAnimationsId": "Item" // Use "Item" for standard item showing and holding player animations
+}
+```
+
+Congratulations! You have successfully added a default animation to your custom item. When the item is held or by the player, the custom item will rotate continuously. This is a basic example of adding animations to custom items. You can create more complex animations using tools like Blockbench and customize them further based on your requirements. You can also chain multiple animations together or trigger them based on specific events or actions within the game (Like primary interactions or secondary interactions). For the purpose of this guide, the first steps are kept simple. In the following chapters, adding effects will get showcased in different interaction scenarios. These effects can also be applied/combined with animations.
+
+## Adding Effects
+Effects are visual or auditory enhancements to your custom items that can, for example, be triggered during interactions. Effects can include particle effects, sound effects, or other visual enhancements.
+
+For the purpose of this guide, we will add a simple particle effect that triggers when the item is used. This means that we have to modify the interaction of the custom item. If you did not read the interaction documentation yet, please refer to the [Custom Item and Interaction](./item-interaction.mdx) guide first.
+
+### Modify Interaction Metadata
+Lets assume we have a custom interaction defined inside the metadata file of the custom item like this:
+
+```json
+{
+  ... // existing item properties from above
+  "Interactions": {
+    "Primary": { // depending on the type of interaction you want
+      "Interactions": [
+        {
+          "Type": "my_custom_interaction_id"
+        }
+      ]
+    }
+  }
+}
+```
+
+To explain effects, lets only focus on the effect part inside the interaction.
+
+```json
+{
+  ... // existing item properties and interaction properties
+  "Effects": {
+    "FirstPersonParticles": [
+        {
+            "SystemId": "Teleport", // The ID of the particle system to use
+            "TargetEntityPart": "PrimaryItem", // The part of the entity to attach the particles to
+            "Color": "#11189b", // The color of the particles
+            "Scale": 0.2, // The scale of the particles
+            "PositionOffset": { // Offset position for the particles relative to the target part
+                "Y": 0.1,
+                "X": 0,
+                "Z": 0
+            }
+        }
+    ],
+    "Particles": [
+        {
+            "SystemId": "Teleport",
+            "TargetEntityPart": "Entity",
+            "Color": "#11189b"
+        }
+    ]
+  }
+}
+```
+
+In this example, we added two particle effects to the interaction:
+- `FirstPersonParticles`: This effect triggers a particle system when the item is used in first-person view. The particles will appear around the primary item held by the player.
+- `Particles`: This effect triggers a particle system when the item is used in third-person view. The particles will appear around the entity (player) when the item is used.
+
+## Conclusion
+You have successfully added animations and effects to your custom item! You can further explore the possibilities by creating more complex animations and experimenting with different particle systems and effects. For more advanced usage, consider combining animations and effects based on specific game events or player interactions to create a more immersive experience (hold interactions, secondary interactions, etc.).
